@@ -17,4 +17,5 @@ Note that these data are currently under embargo and as such there is no permiss
 third parties.
 
 # further reading
-- 10.1126/science.aaa3952 
+- doi:[10.1126/science.aaa3952](http://dx.doi.org/10.1126/science.aaa3952)
+- doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
