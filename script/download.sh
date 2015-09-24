@@ -34,7 +34,8 @@ if [ -d "$DATADIR" ]; then
   if [ ! -e "$MD5CHECKSUMS" ]; then
     
     # download the checksums using wget. this program is probably available on our cloud instance
-    wget "$BASEURL/$MD5CHECKSUMS"
+    # The no check flag ignores an error with the LUMC SSL certificate
+    wget --no-check-certificate "$BASEURL/$MD5CHECKSUMS"
   else
   
     # no need to download again if already done
@@ -48,7 +49,7 @@ if [ -d "$DATADIR" ]; then
     if [ ! -e "$FILE" ]; then
     
       # download the file using wget. this program is probably available on our cloud instance
-      wget "$BASEURL/$FILE"
+      wget --no-check-certificate "$BASEURL/$FILE"
       
       # now compare the checksums
       EXPECTED=`grep $FILE $DATADIR/$MD5CHECKSUMS`
