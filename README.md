@@ -1,7 +1,7 @@
 # apexomes
 Scripts and config files for mapping and analyzing exomes of the great apes.
 
-These scripts and config files will be used on an instance of Naturalis's [private cloud](http://openstack.naturalis.nl).
+These scripts and config files will be used on an instance of Naturalis's [private cloud](https://stack.naturalis.nl).
 The cloud instance will mount a separate data volume that will contain reference data, such as the 
 [gorilla reference genome](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF_000151905.1_gorGor3.1//GCF_000151905.1_gorGor3.1_assembly_structure/Primary_Assembly/assembled_chromosomes/FASTA) and the exome reads, which are currently, temporarily, hosted
 on the following locations:
