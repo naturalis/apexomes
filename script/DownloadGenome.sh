@@ -50,9 +50,9 @@ function WithCheckSums(){
 
 #Script downloads the genome from the Gorilla. Location can be provided in the variable below.
 #BaseUrl="ftp://ftp.ensembl.org/pub/release-82/fasta/gorilla_gorilla/dna/" # with checksums
-BaseUrl="ftp://ftp.ensembl.org/pub/release-58/fasta/gorilla_gorilla/dna/"
+#BaseUrl="ftp://ftp.ensembl.org/pub/release-58/fasta/gorilla_gorilla/dna/"
 #BaseUrl="ftp://ftp.ensembl.org/pub/release-82/fasta/homo_sapiens/dna/"
-
+BaseUrl="http://ftp.ensembl.org/pub/release-71/fasta/gorilla_gorilla/dna/"
 # FILL ME IN FIRST!
 # Could be prodivded by main pipeline.
 Path="/media/sf_D_DRIVE/ape/dl_gen/"
