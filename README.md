@@ -20,3 +20,12 @@ third parties.
 - doi:[10.1126/science.aaa3952](http://dx.doi.org/10.1126/science.aaa3952)
 - doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
 - doi:[10.1038/nature12228](http://dx.doi.org/10.1038/nature12228)
+
+
+# Used abbreviations for the different gorilla subspecies
+Eastern gorilla (G. beringei):
+  Gbb - Gorilla beringei beringei - Mountain gorilla
+  Gbg - Gorilla beringei graueri - Eastern lowland gorilla
+Western gorilla (G. gorilla):
+  Ggd - Gorilla gorilla diehli - Cross River gorilla
+  Ggg - Gorilla gorilla gorilla - Western lowland gorilla
