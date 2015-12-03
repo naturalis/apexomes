@@ -22,7 +22,8 @@ function WithCheckSums(){
 	do
 		name="$(echo $line | awk '{print $3}')"
 		# if the file does not exists, then do code.
-		if [ ! -e "${name}" ]
+		namethere="$(echo ${name} |  sed 's/.gz//g')"
+		if [ ! -e "${namethere}" ]
 		then
 			#Download file.
 			`wget ${BaseUrl}${name}`
@@ -60,7 +61,7 @@ DIRNAME=${Path}Refgenome_${version}_${Species}
 # for saving the files and using local paths.
 cd ${DIRNAME}
 wget ${BaseUrl}
-weblist="$(cat index.html | egrep "a href" | awk -F "<" '{ print $7 }' | awk -F '"' '{ print $2 }')"
+weblist="$(cat index.html | egrep "a href" | awk -F "<" '{ print $7 }' | awk -F '\"' '{ print $2 }')"
 webcheck="$(echo ${weblist} | egrep "CHECKSUMS" )"
 rm index.html
 if [ "${webcheck}"  ]
@@ -68,7 +69,10 @@ then
 	# if checksums available, then do downloading with checksums.
 	WithCheckSums
 else
-	WithoutCheckSums
+        if [ ! -e ${DIRNAME} ]
+        then
+	    WithoutCheckSums
+	fi
 fi
 
 
