@@ -4,7 +4,7 @@
 # The script is not tested with BWA. There is room to update for the files to be BWA ready.
 # Not species specific.
 function WithoutCheckSums(){
-	filelist="$(  echo ${weblist} | tr ' ' '\n' | egrep  ".*\.(.*).dna.chromosome.(^MT|((1|2)|[0-9])|(X|Y))"  | tr "\n" " " )"
+	filelist="$(  echo ${weblist} | tr ' ' '\n' | egrep  ".*\.(.*).dna.chromosome.(((1|2)|[0-9])|(X|Y))"  | tr "\n" " " )"
 	while read  line
 	do
 		wget ${line}
@@ -17,7 +17,7 @@ function WithCheckSums(){
 	# Downloading checksums
 	`wget ${BaseUrl}"CHECKSUMS"`
 	# I advice doing this with a simple egrep and exit if there is any file in the failedChromosomes.
-	fastalist="$(cat checksums | egrep  ".*\.(.*).dna.chromosome.(^MT|((1|2)|[0-9])|(X|Y))" | awk '{ print $0} ') "
+	fastalist="$(cat checksums | egrep  ".*\.(.*).dna.chromosome.(((1|2)|[0-9])|(X|Y))" | awk '{ print $0} ') "
 	while read  line
 	do
 		name="$(echo $line | awk '{print $3}')"
