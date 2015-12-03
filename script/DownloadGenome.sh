@@ -4,7 +4,7 @@
 # The script is not tested with BWA. There is room to update for the files to be BWA ready.
 # Not species specific.
 function WithoutCheckSums(){
-	filelist="$(  echo ${weblist} | tr ' ' '\n' | egrep  ".*\.(.*).dna.chromosome.(((1|2)|[0-9])|(X|Y))"  | tr "\n" " " )"
+	filelist="$(  echo ${weblist} | tr ' ' '\n' | egrep  ".*\.(.*).dna.chromosome.(((1|2)|[0-9])|(X|Y|MT))"  | tr "\n" " " )"
 	while read  line
 	do
 		wget ${line}
@@ -17,7 +17,7 @@ function WithCheckSums(){
 	# Downloading checksums
 	`wget ${BaseUrl}"CHECKSUMS"`
 	# I advice doing this with a simple egrep and exit if there is any file in the failedChromosomes.
-	fastalist="$(cat checksums | egrep  ".*\.(.*).dna.chromosome.(((1|2)|[0-9])|(X|Y))" | awk '{ print $0} ') "
+	fastalist="$(cat checksums | egrep  ".*\.(.*).dna.chromosome.(((1|2)|[0-9])|(X|Y|MT))" | awk '{ print $0} ') "
 	while read  line
 	do
 		name="$(echo $line | awk '{print $3}')"
@@ -49,9 +49,6 @@ function WithCheckSums(){
 
 
 #Script downloads the genome from the Gorilla. Location can be provided in the variable below.
-#BaseUrl="ftp://ftp.ensembl.org/pub/release-82/fasta/gorilla_gorilla/dna/" # with checksums
-#BaseUrl="ftp://ftp.ensembl.org/pub/release-58/fasta/gorilla_gorilla/dna/"
-#BaseUrl="ftp://ftp.ensembl.org/pub/release-82/fasta/homo_sapiens/dna/"
 BaseUrl="http://ftp.ensembl.org/pub/release-71/fasta/gorilla_gorilla/dna/"
 # FILL ME IN FIRST!
 # Could be prodivded by main pipeline.
