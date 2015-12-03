@@ -63,7 +63,7 @@ DIRNAME=${Path}Refgenome_${version}_${Species}
 # for saving the files and using local paths.
 cd ${DIRNAME}
 wget ${BaseUrl}
-weblist="$(cat index.html | egrep "a href" | awk -F "<" '{ print $2 }' |  awk -F '"' '{ print $2 }' )"
+weblist="$(cat index.html | egrep "a href" | awk -F "<" '{ print $7 }' | awk -F '"' '{ print $2 }')"
 webcheck="$(echo ${weblist} | egrep "CHECKSUMS" )"
 rm index.html
 if [ "${webcheck}"  ]
