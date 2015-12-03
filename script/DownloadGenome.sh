@@ -17,7 +17,7 @@ function WithCheckSums(){
 	# Downloading checksums
 	`wget ${BaseUrl}"CHECKSUMS"`
 	# I advice doing this with a simple egrep and exit if there is any file in the failedChromosomes.
-	fastalist="$(cat checksums | egrep  ".*\.(.*).dna.chromosome.(((1|2)|[0-9])|(X|Y|MT))" | awk '{ print $0} ') "
+	fastalist="$(cat CHECKSUMS | egrep  ".*\.(.*).dna.chromosome.(((1|2)|[0-9])|(X|Y|MT))" | awk '{ print $0} ') "
 	while read  line
 	do
 		name="$(echo $line | awk '{print $3}')"
