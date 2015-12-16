@@ -4,9 +4,15 @@
 # The original script can be found on github at: https://github.com/naturalis/tomatogenome/bwa.sh
 
 REFERENCE=/mnt/data/pipeline/Refgenome_release-71_gorilla_gorilla/allCHR.fa
-READS=/mnt/data
+#READS=/mnt/data
+READS=$1
 #SAMPLES=`ls $READS | egrep -v '^0'`
-SAMPLES="Testaapje"
+#SAMPLES="Testaapje"
+SAMPLES=$2
+
+echo "reads ${READS}"
+echo "samples ${SAMPLES}"
+
 
 # threads for BWA align
 CORES=4
@@ -15,12 +21,12 @@ CORES=4
 if [ ! -e $REFERENCE.bwt ]; then
 	echo "going to index $REFERENCE"
 
-	# Warning: "-a bwtsw" does not work for short genomes, 
-	# while "-a is" and "-a div" do not work for long 
-	# genomes. Please choose "-a" according to the length 
+	# Warning: "-a bwtsw" does not work for short genomes,
+	# while "-a is" and "-a div" do not work for long
+	# genomes. Please choose "-a" according to the length
 	# of the genome.
 	bwa index -a bwtsw $REFERENCE
-else 
+else
 	echo "$REFERENCE already indexed"
 fi
 
@@ -48,7 +54,7 @@ for SAMPLE in $SAMPLES; do
 		gzip -9 $FASTQS
 	else
 		echo "sam file $SAM already created"
-	fi		
+	fi
 
 	# do samtools filter if needed
 	if [ ! -e $SAM.filtered ]; then
@@ -62,7 +68,7 @@ for SAMPLE in $SAMPLES; do
 	else
 		echo "sam file $SAM.filtered already created"
 	fi
-	
+
 	# do samtools sorting if needed
 	if [ ! -e $SAM.sorted.bam ]; then
 
@@ -75,7 +81,7 @@ for SAMPLE in $SAMPLES; do
 
 	# created index for BAM file if needed
 	if [ ! -e $SAM.sorted.bam.bai ]; then
-	
+
 		# this should result in faster processing
 		echo "going to run samtools index $SAM.sorted.bam"
 		samtools index $SAM.sorted.bam

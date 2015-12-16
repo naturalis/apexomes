@@ -2,12 +2,12 @@
 
 # work in progres variables.
 # must be changed for the actual pipeline.
-path_output=/mnt/data/pipeline/output_sickle/
+path_output=/mnt/data/pipeline
 
 
 echo "Start script: $(date +%T)"
 read -p "Enter name for outputdirectory: " usrRunname
-outputDir=${path_output}${usrRunname}
+outputDir=${path_output}/${usrRunname}
 
 while
   [ -d ${outputDir} ]
@@ -18,7 +18,11 @@ done
 
 mkdir ${outputDir}
 
+read -p "Enter first inputfile: " inFile1
+read -p "Enter second inputfile: " inFile2
+
+
 echo "Start pipeline: $(date +%T)"
 # hier eerste script voor pipeline aanroepen.
 # denk aan het meegeven van de outputdir!
-
+bash apexomesPipeline.sh ${outputDir} ${inFile1} ${inFile2} ${path_output} ${usrRunname}

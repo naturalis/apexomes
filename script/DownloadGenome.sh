@@ -53,7 +53,7 @@ function WithCheckSums(){
 BaseUrl="http://ftp.ensembl.org/pub/release-71/fasta/gorilla_gorilla/dna/"
 # FILL ME IN FIRST!
 # Could be prodivded by main pipeline.
-Path="DEFINE ME FIRST"
+Path="/mnt/data/pipeline/"
 version="$(echo $BaseUrl | awk -F '/' '{print $5}')"
 Species="$(echo $BaseUrl | awk -F '/' '{print $7}')"
 DIRNAME=${Path}Refgenome_${version}_${Species}
