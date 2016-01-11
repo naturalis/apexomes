@@ -13,7 +13,18 @@ then
 fi
 echo ${outputDir}
 
-bash ./Trimmer.sh ${outputDir} ${inFile1} ${inFile2}
-bash ./bwa.sh ${outputPath} ${usrOutputDir}
+
+#echo "${outputDir}"
+#echo "${inFile1}"
+#echo "${inFile2}"
+#echo "${outputPath}"
+#echo "${usrOutputDir}"
+
+#bash ./Trimmer.sh ${outputDir} ${inFile1} ${inFile2}
+
+echo "trim klaar"
+sleep 10
+bash ./bwa.sh ${outputPath} ${usrOutputDir} ${outputDir}
+
 
 echo "End pipeline: $(date +%T)"

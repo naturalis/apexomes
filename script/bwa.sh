@@ -10,12 +10,16 @@ READS=$1
 #SAMPLES="Testaapje"
 SAMPLES=$2
 
+old_wd=$(pwd)
+OUTPUTDIR=$3
+cd ${OUTPUTDIR}
+
 echo "reads ${READS}"
 echo "samples ${SAMPLES}"
 
 
 # threads for BWA align
-CORES=4
+CORES=6
 
 # recreate BWA index if not exists
 if [ ! -e $REFERENCE.bwt ]; then
@@ -36,7 +40,7 @@ for SAMPLE in $SAMPLES; do
 
 	# list the FASTQ files in this dir. this should be
 	# two files (paired end)
-	FASTQS=`ls $READS/$SAMPLE/*.fastq.gz`
+	FASTQS=`ls $READS/$SAMPLE/out_trimmed_p*.fastq.gz`
 
 	for FASTQ in $FASTQS; do
 
@@ -50,8 +54,8 @@ for SAMPLE in $SAMPLES; do
 
 		# create paired-end SAM file
 		echo "going to run bwa mem $FASTA $FASTQS > $SAM"
-		bwa mem $REFERENCE $FASTQS > $SAM
-		gzip -9 $FASTQS
+		bwa mem -t $CORES $REFERENCE $FASTQS > $SAM
+		#gzip -9 $FASTQS
 	else
 		echo "sam file $SAM already created"
 	fi
@@ -64,7 +68,8 @@ for SAMPLE in $SAMPLES; do
 		# XXX maybe increase -q?
 		echo "going to run samtools view -bS -F 4 -q 50 $SAM > $SAM.filtered"
 		samtools view -bS -F 4 -q 50 $SAM > $SAM.filtered
-		gzip -9 $SAM
+		# This is working, but it's too slow...
+                #gzip -9 $SAM
 	else
 		echo "sam file $SAM.filtered already created"
 	fi
@@ -90,3 +95,5 @@ for SAMPLE in $SAMPLES; do
 	fi
 
 done
+
+cd ${old_wd}
