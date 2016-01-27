@@ -2,12 +2,11 @@
 
 # work in progres variables.
 # must be changed for the actual pipeline.
-path_output=/mnt/data/BoerHaave6-1
-
+path_output=/mnt/data/NewRefPipeline
 
 echo "Start script: $(date +%T)"
 #read -p "Enter name for outputdirectory: " usrRunname
-usrRunname=Sandra
+usrRunname=SandraNew
 outputDir=${path_output}/${usrRunname}
 
 #while
@@ -21,6 +20,7 @@ outputDir=${path_output}/${usrRunname}
 #echo "Skip voor 1 keer!"
 #read -p "Enter first inputfile: " inFile1
 #read -p "Enter second inputfile: " inFile2
+# Nodig voor het trimmen. 13-1-2016 is er geen trimming gebruikt.
 inFile1=/mnt/data/Blij_Sandra/Generade_Gorilla-gorilla-gorilla_F_Sandra_EAZA-Studbook-9_L007_R1_001.fastq.gz
 inFile2=/mnt/data/Blij_Sandra/Generade_Gorilla-gorilla-gorilla_F_Sandra_EAZA-Studbook-9_L007_R2_001.fastq.gz
 

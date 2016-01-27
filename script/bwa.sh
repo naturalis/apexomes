@@ -1,30 +1,29 @@
 #!/bin/bash
 
-# This script was made by Rutger Vos and altered by Sebastiaan Klein
+# This script was made by Rutger Vos and altered by Sebastiaan Klein. 
+# Small alterations and documentation were done by Sebastiaan de Vriend.
 # The original script can be found on github at: https://github.com/naturalis/tomatogenome/bwa.sh
 
-REFERENCE=/mnt/data/pipeline/Refgenome_release-71_gorilla_gorilla/allCHR.fa
-#READS=/mnt/data
+#REFERENCE=/mnt/data/pipeline/Refgenome_release-71_gorilla_gorilla/allCHR.fa
+REFERENCE=/mnt/data/NewRefPipeline/Gorilla_gorilla.gorGor3.1.71.dna.toplevel.fa
 READS=$1
-#SAMPLES=`ls $READS | egrep -v '^0'`
-#SAMPLES="Testaapje"
 SAMPLES=$2
 
 old_wd=$(pwd)
 OUTPUTDIR=$3
 cd ${OUTPUTDIR}
 
-echo "reads ${READS}"
-echo "samples ${SAMPLES}"
+echo "Reads ${READS}"
+echo "Samples: ${SAMPLES}"
 
 
 # threads for BWA align
-CORES=6
+# The current machine has 8 cores available. To keep the system running we have choosen to use 7 cores.
+CORES=7
 
 # recreate BWA index if not exists
 if [ ! -e $REFERENCE.bwt ]; then
 	echo "going to index $REFERENCE"
-
 	# Warning: "-a bwtsw" does not work for short genomes,
 	# while "-a is" and "-a div" do not work for long
 	# genomes. Please choose "-a" according to the length
@@ -51,11 +50,9 @@ for SAMPLE in $SAMPLES; do
 
 	# do bwa sampe if needed
 	if [ ! -e $SAM ]; then
-
 		# create paired-end SAM file
 		echo "going to run bwa mem $FASTA $FASTQS > $SAM"
 		bwa mem -t $CORES $REFERENCE $FASTQS > $SAM
-		#gzip -9 $FASTQS
 	else
 		echo "sam file $SAM already created"
 	fi
@@ -68,8 +65,8 @@ for SAMPLE in $SAMPLES; do
 		# XXX maybe increase -q?
 		echo "going to run samtools view -bS -F 4 -q 50 $SAM > $SAM.filtered"
 		samtools view -bS -F 4 -q 50 $SAM > $SAM.filtered
-		# This is working, but it's too slow...
-                #gzip -9 $SAM
+		
+                gzip -9 $SAM
 	else
 		echo "sam file $SAM.filtered already created"
 	fi
@@ -95,5 +92,5 @@ for SAMPLE in $SAMPLES; do
 	fi
 
 done
-
+# Switch back to old directory
 cd ${old_wd}
