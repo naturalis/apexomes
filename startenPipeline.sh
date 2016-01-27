@@ -13,11 +13,11 @@ select ant in ${yesno}
 	if [ "${REPLY,,}" = 'y' ]
 	then
 	    break
-        else if [ "${REPLY,,}" = 'n' ]
-        then
-            echo "Please check your config.txt file and then run the pipeline again"
-            exit
-	fi	
+    else if [ "${REPLY,,}" = 'n' ]
+    then
+        echo "Please check your config.txt file and then run the pipeline again"
+        exit
+	fi
     done
 
 echo "Do you want to trim the reads?"
