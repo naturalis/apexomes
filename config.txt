@@ -6,7 +6,7 @@
 # The next line is used for declaring a result folder, where all the pipeline
 # results are stored. For example:
 # /mnt/data/Results
-/mnt/data/NewRefPipeline
+/mnt/data/NewRefPipeline/tet
 # The following lines are used to declare monkey directories
 # for example:
 # /mnt/data/Blij_Sandra

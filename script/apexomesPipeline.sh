@@ -1,6 +1,12 @@
 #!/bin/bash
-
-outputDir=$1
+# Declaration of variables.
+RefGenome=$1
+ResultDir=$2
+Monkeys=$3
+echo $1
+echo $2
+echo ${Monkeys[@]}
+#outputDir=$1
 inFile1=$2
 inFile2=$3
 outputPath=$4
@@ -11,7 +17,7 @@ if [[ "${last_char}" != / ]]
 then
   outputDir=${outputDir}/
 fi
-echo ${outputDir}
+#echo ${outputDir}
 
 
 #echo "${outputDir}"
@@ -23,8 +29,8 @@ echo ${outputDir}
 #bash ./Trimmer.sh ${outputDir} ${inFile1} ${inFile2}
 
 echo "trim klaar"
-sleep 10
-bash ./bwa.sh ${outputPath} ${usrOutputDir} ${outputDir}
+#sleep 10
+#bash ./bwa.sh ${outputPath} ${usrOutputDir} ${outputDir}
 
 
 echo "End pipeline: $(date +%T)"
