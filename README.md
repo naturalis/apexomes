@@ -32,7 +32,7 @@ Used abbreviations for the different gorilla subspecies
   - Ggg - Gorilla gorilla gorilla - Western lowland gorilla
 
 
-==================================================
+=====
 
 # Description
 The apexomes project is collaboration between Hogeschool Leiden students and Naturalis Biodiversity Center. In this project a pipeline was built to identify the subspecies of a gorilla by comparing the genetic variance with other gorilla data. The pipeline has only been tested with gorilla data, but shouldn’t be organism-specific. The pipeline has been running on a digital work environment. This work environment can be found on the OpenStack cloud server of Naturalis Biodiversity Center. 
@@ -65,7 +65,7 @@ This file should be edited before running the pipeline.
 ### *How to start*
 All the scripts used in the pipeline are stored in the directory *script*.
 The pipeline can be started by running the pipeline main script:
-*startenPipeline*.
+*startPipeline*.
 ### *Additional scripts*
 The directory *script* contains a subdirectory *additionalScripts*. This directory contains other scripts that were used in this project, but are not part of the actual pipeline.
 
