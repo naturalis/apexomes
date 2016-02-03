@@ -1,1 +1,0 @@
-bwa aln -t 5 /mnt/data/pipeline/Refgenome_release-71_gorilla_gorilla/allCHR.fa /mnt/data/.... > out.sai
