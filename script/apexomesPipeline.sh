@@ -22,46 +22,23 @@ do
     if [ "${Trim}" = 'y' ]
     then
         # Please specify trim command.
-        bash ./Trimmer.sh ${samplepath} ${monkey}
+        bash ./trimmer.sh ${samplepath} ${monkey}
 
-	trimextension = "out_trimmed_p"
+	trimextension="out_trimmed_p"
     else
         # Move reads to resultfolder so mapping script
         # can grab the files and place result files on
         # right location.
         # PLEASE CHECK COMMAND
-        #"$( cp ${monkey}/*.gz ${samplepath}/ )"
-	trimextension = ""
+        cp ${monkey}/*.gz ${samplepath}/
+        sleep 10
+	trimextension="a"
     fi
-    # Wat moet hier?
     # outputhPath = ${ResultDir} ${useroutputdir} = ${name} ${outputDir} = samplepath
     #bash ./bwa.sh ${outputPath} ${usrOutputDIr} ${outputDir} ${trimextension} ${RefGenome}
-    #bash ./bwa.sh ${ResultDir} ${name} ${samplepath} ${trimextension} ${RefGenome}
+    bash ./bwa.sh ${ResultDir} ${name} ${samplepath} ${trimextension} ${RefGenome}
     # After mapping it is variant calling time...
-    ./variantcalling.sh ${RefGenome} ${samplepath}
+    bash ./variantcalling.sh ${RefGenome} ${samplepath}
 done
-
-#outputDir=$1
-#inFile1=$2
-#inFile2=$3
-#outputPath=$4
-#usrOutputDir=$5
-
-
-#echo ${outputDir}
-
-
-#echo "${outputDir}"
-#echo "${inFile1}"
-#echo "${inFile2}"
-#echo "${outputPath}"
-#echo "${usrOutputDir}"
-
-#bash ./Trimmer.sh ${ResultDir} ${inFile1} ${inFile2}
-
-echo "trim klaar"
-#sleep 10
-#bash ./bwa.sh ${outputPath} ${usrOutputDir} ${outputDir} ${trimextension} ${RefGenome}
-./bwa.sh
 
 echo "End pipeline: $(date +%T)"

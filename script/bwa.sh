@@ -29,6 +29,7 @@ if [ ! -e $REFERENCE.bwt ]; then
 	# while "-a is" and "-a div" do not work for long
 	# genomes. Please choose "-a" according to the length
 	# of the genome.
+	echo "$REFERENCE"
 	bwa index -a bwtsw $REFERENCE
 else
 	echo "$REFERENCE already indexed"
@@ -37,11 +38,15 @@ fi
 # iterate over directories
 for SAMPLE in $SAMPLES; do
 	echo "going to process sample $SAMPLE"
-
+	echo ${REFERENCE}
 	# list the FASTQ files in this dir. this should be
 	# two files (paired end)
-	FASTQS=`ls $READS/$SAMPLE/"$Trimextension"*.fastq.gz`
-
+	if ["${Trimextension}" = "a"];then
+		ls $READS/$SAMPLE/*.fastq.gz
+		FASTQS=`ls $READS/$SAMPLE/*.fastq.gz`
+	else
+		FASTQS=`ls $READS/$SAMPLE/"$Trimextension"*.fastq.gz`
+	fi
 	for FASTQ in $FASTQS; do
 
 		# create new name
