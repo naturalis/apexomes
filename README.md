@@ -63,10 +63,8 @@ This file should be edited before running the pipeline.
 
 # Running the pipeline
 ### *How to start*
-All the scripts used in the pipeline are stored in the directory *script*.
-The pipeline can be started by running the pipeline main script:
-*startPipeline*.
+The pipeline can be started by running the pipeline main script: *startPipeline* stored in the apexomes directory.
+All other scripts used in the pipeline are stored in the directory *script*. 
+
 ### *Additional scripts*
 The directory *script* contains a subdirectory *additionalScripts*. This directory contains other scripts that were used in this project, but are not part of the actual pipeline.
-
-  
