@@ -20,7 +20,7 @@ for file in *.bgz.tbi; do
 done
 
 After that, run `bgzip -d *.gz` for each file to extract everything one by one. After that, go to concat reference.
-Run daarna bgzip -d *.gz per file om alles uit te pakken. Ga daarna naar Samenvoegen referentie.
+
 
 # Concat reference:
 If all vcf file are represent. Run `bcftools concat *.vcf > outputname`.
