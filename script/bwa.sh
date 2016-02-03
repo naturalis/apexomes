@@ -5,10 +5,11 @@
 # The original script can be found on github at: https://github.com/naturalis/tomatogenome/bwa.sh
 
 #REFERENCE=/mnt/data/pipeline/Refgenome_release-71_gorilla_gorilla/allCHR.fa
-REFERENCE=/mnt/data/NewRefPipeline/Gorilla_gorilla.gorGor3.1.71.dna.toplevel.fa
+#REFERENCE=/mnt/data/NewRefPipeline/Gorilla_gorilla.gorGor3.1.71.dna.toplevel.fa
+REFERENCE=$5
 READS=$1
 SAMPLES=$2
-
+Trimextension=$4
 old_wd=$(pwd)
 OUTPUTDIR=$3
 cd ${OUTPUTDIR}
@@ -39,7 +40,7 @@ for SAMPLE in $SAMPLES; do
 
 	# list the FASTQ files in this dir. this should be
 	# two files (paired end)
-	FASTQS=`ls $READS/$SAMPLE/out_trimmed_p*.fastq.gz`
+	FASTQS=`ls $READS/$SAMPLE/"$Trimextension"*.fastq.gz`
 
 	for FASTQ in $FASTQS; do
 
@@ -65,7 +66,6 @@ for SAMPLE in $SAMPLES; do
 		# XXX maybe increase -q?
 		echo "going to run samtools view -bS -F 4 -q 50 $SAM > $SAM.filtered"
 		samtools view -bS -F 4 -q 50 $SAM > $SAM.filtered
-		
                 gzip -9 $SAM
 	else
 		echo "sam file $SAM.filtered already created"
