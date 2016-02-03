@@ -1,19 +1,16 @@
 # This config file is used to set a reference and to declare dataset locations.
-
 # The first line is used for the reference genome.
 # For example:
 # /mnt/data/Reference/Genome
 /mnt/data/NewRefPipeline/Gorilla_gorilla.gorGor3.1.71.dna.toplevel.fa
-
 # The next line is used for declaring a result folder, where all the pipeline
 # results are stored. For example:
 # /mnt/data/Results
 /mnt/data/NewRefPipeline/tet
-
 # The following lines are used to declare monkey directories
 # for example:
 # /mnt/data/Blij_Sandra
 # /mnt/data/Blij_Thirza
 # Please use a minimum of one.
-/mnt/data/Blij_Sandra
+#/mnt/data/Blij_Sandra
 /mnt/data/Blij_Thirza
