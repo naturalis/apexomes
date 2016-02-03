@@ -1,22 +1,19 @@
 #!/bin/bash
 # Declaration of variables.
-RefGenome=$1
-ResultDir=$2
-Monkeys=$3
-echo $1
-echo $2
-echo ${Monkeys[@]}
+RefGenome="$(cat config.txt | egrep -v '#' | head -n 1)"
+ResultDir="$(cat config.txt | egrep -v '#' | head -n 2 | tail -n 1)"
+arDataDir="$(cat config.txt | egrep -v '#' | awk '{if(NR>2)print}')"
+for monkey in ${arDataDir}
+do
+    echo ${monkey}
+done
 #outputDir=$1
-inFile1=$2
-inFile2=$3
-outputPath=$4
-usrOutputDir=$5
+#inFile1=$2
+#inFile2=$3
+#outputPath=$4
+#usrOutputDir=$5
 
-last_char=${outputDir:$((${#outputDir}-1)):${#outputDir}}
-if [[ "${last_char}" != / ]]
-then
-  outputDir=${outputDir}/
-fi
+
 #echo ${outputDir}
 
 
@@ -26,7 +23,7 @@ fi
 #echo "${outputPath}"
 #echo "${usrOutputDir}"
 
-#bash ./Trimmer.sh ${outputDir} ${inFile1} ${inFile2}
+#bash ./Trimmer.sh ${ResultDir} ${inFile1} ${inFile2}
 
 echo "trim klaar"
 #sleep 10
