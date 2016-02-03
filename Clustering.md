@@ -16,23 +16,23 @@ is present. Run the following two commands:
 done`
 
 for file in *.bgz.tbi; do
-    mv "$file" "`basename $file .bgz.tbi`.gz.tbi"
+    mv "$file" "``basename $file .bgz.tbi``.gz.tbi"
 done
 
-After that, run bgzip -d *.gz for each file to extract everything one by one. After that, go to concat reference.
+After that, run `bgzip -d *.gz` for each file to extract everything one by one. After that, go to concat reference.
 Run daarna bgzip -d *.gz per file om alles uit te pakken. Ga daarna naar Samenvoegen referentie.
 
 # Concat reference:
-If all vcf file are represent. Run bcftools concat *.vcf > outputname.
+If all vcf file are represent. Run `bcftools concat *.vcf > outputname`.
 This is to create a bulky file for all vcf data.
 
 # Merge reference with your data:
 This step is repettive. First you have to compress the two vcf files you want to merge: For example reference.vcf and Auzoux.vcf
 First you have to run:
-bgzip reference.vcf
-tabix -p vcf reference.vcf.gz
-bgzip Auzoux.vcf
-tabix -p vcf Auzoux.vcf.gz
+`bgzip reference.vcf`
+`tabix -p vcf reference.vcf.gz`
+`bgzip Auzoux.vcf`
+`tabix -p vcf Auzoux.vcf.gz`
 This is to compress the files and create indexes so they can be used for merging. The merging can be done by
 bcftools merge reference.vcf.gz Auzoux.vcf.gz > AuzouxMergedWithRef.vcf
 This will create a large file for the Auzoux Gorilla and the reference. If you want to add more gorillas, then you have
@@ -40,15 +40,15 @@ to run de bgzip for the new large reference file and your next Gorilla. If you h
 
 # Clustering:
 To do clustering you have to convert the vcf file to the plink format file. This can be done by:
-vcftools --vcf INPUTFILE.vcf --plink --out  OUTPUTFILE.raw
+`vcftools --vcf INPUTFILE.vcf --plink --out  OUTPUTFILE.raw`
 Now you have to run two plink commands:
-plink --file OUTPUTFILE.raw --genome --noweb --allow-no-sex --out OUTPUTFILE.raw
-plink --file OUTPUTFILE.raw --read-genome OUTPUTFILE.raw.genome --cluster --mds-plot 2 --noweb
+`plink --file OUTPUTFILE.raw --genome --noweb --allow-no-sex --out OUTPUTFILE.raw`
+`plink --file OUTPUTFILE.raw --read-genome OUTPUTFILE.raw.genome --cluster --mds-plot 2 --noweb`
 
 
 After that you can load the result file into R and visualize it.
 Example code:
-getwd()
+`getwd()
 d <- read.table("plink.mds", h=T)
 print("Auzoux can have different locations")
 d$pop = factor(c(rep("GBB", 7), rep("GBG", 9), rep("GGD", 1), rep("GGG", 27), rep("Sandra"), "Thirza", "Auzoux"))
@@ -59,4 +59,4 @@ legend("topleft", c("Auzoux", refnames, "Sandra", "Thirza"), pch=19, col=c(1,2,3
 text(d$C1, d$C2, labels=c(rep(NA, 22), "Sandra", "Naam hier"), pos=2)
 text(d$C1, d$C2, labels=c(rep(NA, 44), "Sandra", NA), pos=2)
 text(d$C1, d$C2, labels=c(rep(NA, 45), "Thirza", NA), pos=1)
-text(d$C1, d$C2, labels=c(rep(NA, 46), "Auzoux", NA), pos=1)
+text(d$C1, d$C2, labels=c(rep(NA, 46), "Auzoux", NA), pos=1)`
