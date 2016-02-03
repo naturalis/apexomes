@@ -30,4 +30,43 @@ Used abbreviations for the different gorilla subspecies
 - Western gorilla (G. gorilla):
   - Ggd - Gorilla gorilla diehli - Cross River gorilla
   - Ggg - Gorilla gorilla gorilla - Western lowland gorilla
+
+
+==================================================
+
+# Description
+The apexomes project is collaboration between Hogeschool Leiden students and Naturalis Biodiversity Center. In this project a pipeline was built to identify the subspecies of a gorilla by comparing the genetic variance with other gorilla data. The pipeline has only been tested with gorilla data, but shouldn’t be organism-specific. The pipeline has been running on a digital work environment. This work environment can be found on the OpenStack cloud server of Naturalis Biodiversity Center. 
+
+# Dependencies
+The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including the used version and the commandline installation command. 
+ - Git (1.9.1): sudo apt-get install git
+ - Sickle (1.33): git clone https://github.com/najoshi/sickle
+ - Make (3.81): sudo apt-get install make
+ - Gcc (4.8.4): sudo apt-get install gcc
+ - Zlib1g-dev (1.26): sudo apt-get install zlib1g-dev
+ - python-pip (2.7.6): sudo apt-get install python-pip
+ - python-dev (2.7.6): sudo apt-get install python-dev
+ - ftp-cloudfs (0.34): sudo pip install ftp-cloudfs python-keystoneclient python-swiftclient 
+ - BWA (0.7.5a-r405): sudo apt-get install bwa
+ - SAMtools (0.1.19-96b5f2294a): git clone git://github.com/samtools/samtools.git   
+    sudo apt-get install samtools
+ - Freebayes (1.0.2): https://github.com/ekg/freebayes
+ - Freebayes compiler: Sudo apt-get install cmake
+
+# Input
+### *Data used*
+The pipeline works with paired end reads. It needs exactly two files, one forward and one revers. It also uses a (downloaded) reference genome.
+### *config.txt*
+The settings for the pipeline can be stored in the file *config.txt*. 
+It stores the location of the reference genome, the location of the reads and the desired output directories.
+This file should be edited before running the pipeline.
+
+# Running the pipeline
+### *How to start*
+All the scripts used in the pipeline are stored in the directory *script*.
+The pipeline can be started by running the pipeline main script:
+*startenPipeline*.
+### *Additional scripts*
+The directory *script* contains a subdirectory *additionalScripts*. This directory contains other scripts that were used in this project, but are not part of the actual pipeline.
+
   
