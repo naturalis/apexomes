@@ -41,7 +41,7 @@ for SAMPLE in $SAMPLES; do
 	echo ${REFERENCE}
 	# list the FASTQ files in this dir. this should be
 	# two files (paired end)
-	if ["${Trimextension}" = "a"];then
+	if [ "${Trimextension}" = "a" ];then
 		ls $READS/$SAMPLE/*.fastq.gz
 		FASTQS=`ls $READS/$SAMPLE/*.fastq.gz`
 	else
