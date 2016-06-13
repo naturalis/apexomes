@@ -35,10 +35,14 @@ Used abbreviations for the different gorilla subspecies
 =====
 
 # Description
-The apexomes project is collaboration between Hogeschool Leiden students and Naturalis Biodiversity Center. In this project a pipeline was built to identify the subspecies of a gorilla by comparing the genetic variance with other gorilla data. The pipeline has only been tested with gorilla data, but shouldn’t be organism-specific. The pipeline has been running on a digital work environment. This work environment can be found on the OpenStack cloud server of Naturalis Biodiversity Center. 
+The apexomes project is a Generade collaboration between LUMC, Hogeschool Leiden, Museum Boerhaave and Naturalis Biodiversity Center. 
+In this project a pipeline is built to identify the subspecies of a gorilla museum specimen by comparing the genetic 
+variance with other gorilla data. The pipeline has only been tested with gorilla data, but shouldn’t be organism-specific. 
+The pipeline has been running in a cloud instance on Naturalis's OpenStack environment. 
 
 # Dependencies
-The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including the used version and the commandline installation command. 
+The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including 
+the used version and the commandline installation command. 
  - Git (1.9.1): sudo apt-get install git
  - Sickle (1.33): git clone https://github.com/najoshi/sickle
  - Make (3.81): sudo apt-get install make
@@ -55,7 +59,8 @@ The work environment has been created on an Ubuntu operating system. Below are t
 
 # Input
 ### *Data used*
-The pipeline works with paired end reads. It needs exactly two files, one forward and one revers. It also uses a (downloaded) reference genome.
+The pipeline works with paired end reads. It needs exactly two files, one forward and one reverse. It also uses a 
+(downloaded) reference genome.
 ### *config.txt*
 The settings for the pipeline can be stored in the file *config.txt*. 
 It stores the location of the reference genome, the location of the reads and the desired output directories.
@@ -67,4 +72,5 @@ The pipeline can be started by running the pipeline main script: *startPipeline*
 All other scripts used in the pipeline are stored in the directory *script*. 
 
 ### *Additional scripts*
-The directory *script* contains a subdirectory *additionalScripts*. This directory contains other scripts that were used in this project, but are not part of the actual pipeline.
+The directory *script* contains a subdirectory *additionalScripts*. This directory contains other scripts that were used in 
+this project, but are not part of the actual pipeline.
