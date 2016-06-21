@@ -144,11 +144,11 @@ different, currently recognized gorilla subspecies. These data were hosted on ft
 identifiers that are prefixed with abbreviations that denote the different subspecies:
 
 - Eastern gorilla (*G. beringei*):
-  - `Gbb` - *Gorilla beringei beringei* - Mountain gorilla
-  - `Gbg` - *Gorilla beringei graueri* - Eastern lowland gorilla
+  - `Gbb` - *Gorilla beringei beringei* - [Mountain gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=1159185)
+  - `Gbg` - *Gorilla beringei graueri* - [Eastern lowland gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=46359)
 - Western gorilla (*G. gorilla*):
-  - `Ggd` - *Gorilla gorilla diehli* - Cross River gorilla
-  - `Ggg` - *Gorilla gorilla gorilla* - Western lowland gorilla
+  - `Ggd` - *Gorilla gorilla diehli* - [Cross River gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=406788)
+  - `Ggg` - *Gorilla gorilla gorilla* - [Western lowland gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9595)
 
 **Note** - Please check if the file extension contains ".bgz". This is a non-standard extension that for reasons unbeknownst 
 to us were used by the Sanger centre. This extension creates errors when used with bgzip. If the extension is present, run the
