@@ -19,7 +19,8 @@ The main sources of input data are described in the following sections.
 #### Reference genome
 
 Same as previously published research, we use the reference genome [gorGor3.1](http://ensembl.org/Gorilla_gorilla/Info/Index).
-The data in fasta format were downloaded from [here](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF_000151905.1_gorGor3.1//GCF_000151905.1_gorGor3.1_assembly_structure/Primary_Assembly/assembled_chromosomes/FASTA).
+The data in fasta format were downloaded from 
+ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF_000151905.1_gorGor3.1//GCF_000151905.1_gorGor3.1_assembly_structure/Primary_Assembly/assembled_chromosomes/FASTA
 
 #### Exome data
 
