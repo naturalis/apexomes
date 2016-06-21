@@ -13,6 +13,7 @@ environment.
 ## About the pipeline
 The pipeline consists of an [interactive wrapper](script/startPipeline.sh) around a 
 [driver script](script/apexomesPipeline.sh) that takes the following steps:
+
 1. Optionally, [reads are trimmed](script/trimmer.sh) using `sickle`
 2. [Reads are mapped](script/bwa.sh) (paired end) against the reference using `bwa`
 3. [Mapping is filtered, sorted and indexed](script/bwa.sh) using `samtools`
