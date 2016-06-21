@@ -54,10 +54,68 @@ identifiers that are prefixed with abbreviations that denote the different subsp
   - `Ggd` - *Gorilla gorilla diehli* - Cross River gorilla
   - `Ggg` - *Gorilla gorilla gorilla* - Western lowland gorilla
 
+**Note** - Please check if the file extension contains ".bgz". This is a non-standard extension that for reasons unbeknownst 
+to us were used by the Sanger centre. This extension creates errors when used with bgzip. If the extension is present, run the
+following two commands inside the vcf folder:
+
+```bash
+for file in *.bgz; do
+    mv "$file" "`basename $file .bgz`.gz"
+done
+
+for file in *.bgz.tbi; do
+    mv "$file" "`basename $file .bgz.tbi`.gz.tbi"
+done
+```
+
+After that, the files can be extracted by running `bgzip -d *.gz`.
+
 #### References
 1. doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
 2. doi:[10.1126/science.aaa3952](http://dx.doi.org/10.1126/science.aaa3952)
 3. doi:[10.1038/nature12228](http://dx.doi.org/10.1038/nature12228)
+
+## About the pipeline
+
+The pipeline works with paired end reads. It needs exactly two files, one forward and one reverse. It also uses a 
+(downloaded) reference genome. The settings for the pipeline are stored in a [configuration file](conf/config.txt). 
+This configuration file stores the location of the reference genome, the location of the reads and the desired 
+output directories. This file should be edited before running the pipeline.
+
+#### How to start
+The pipeline can be started by running the pipeline [main script](script/startPipeline.sh). All scripts used in 
+the pipeline are stored in the directory [script](script). 
+
+## Clustering
+
+Clustering could be done with many combinations with datasets. For beginning with clustering you must determine what 
+exactly you want to cluster. For example: Do you want to use a reference? Do you want to have a coding reference or 
+raw reference? 
+
+#### Clustering with coding reference
+
+If you want to have a dataset only for coding genes (i.e. exomic loci), you have to use the 
+[Extract-cdna-headers.bash](script/Extract-cdna-headers.bash) script. Please change the input directory variable 
+"inputvcfdir" and change the output directory variable "outputdir" to the right directories. Go to concat reference 
+for further instructions.
+
+#### Concat VCF files
+If all vcf file are present, run `bcftools concat *.vcf > outputname`.
+This is to create a bulky, concatenated file for all vcf data.
+
+#### Merge reference with your data
+This step is repetitive. First you have to compress the two vcf files you want to merge: For example reference.vcf and 
+Auzoux.vcf First you have to run:
+``` bash
+bgzip reference.vcf
+tabix -p vcf reference.vcf.gz
+bgzip Auzoux.vcf
+tabix -p vcf Auzoux.vcf.gz
+```
+This is to compress the files and create indexes so they can be used for merging. The merging can be done by
+`bcftools merge reference.vcf.gz Auzoux.vcf.gz > AuzouxMergedWithRef.vcf`
+This will create a large file for the Auzoux Gorilla and the reference. If you want to add more gorillas, then you have
+to run de bgzip for the new large reference file and your next Gorilla. If you have added all the gorillas you want, go to Clustering.
 
 #### Dependencies
 The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including 
@@ -75,67 +133,6 @@ the used version and the commandline installation command.
     sudo apt-get install samtools
  - Freebayes (1.0.2): https://github.com/ekg/freebayes
  - Freebayes compiler: Sudo apt-get install cmake
-
-# Input
-### *Data used*
-The pipeline works with paired end reads. It needs exactly two files, one forward and one reverse. It also uses a 
-(downloaded) reference genome.
-### *config.txt*
-The settings for the pipeline can be stored in the file *config.txt*. 
-It stores the location of the reference genome, the location of the reads and the desired output directories.
-This file should be edited before running the pipeline.
-
-# Running the pipeline
-### *How to start*
-The pipeline can be started by running the pipeline main script: *startPipeline* stored in the apexomes directory.
-All other scripts used in the pipeline are stored in the directory *script*. 
-
-### *Additional scripts*
-The directory *script* contains a subdirectory *additionalScripts*. This directory contains other scripts that were used in 
-this project, but are not part of the actual pipeline.
-
-Clustering could be done with many combinations with datasets. For beginning with clustering you must determine what exactly you want
-to cluster. For example: Do you want to use a reference? Do you want to have a coding reference or raw reference? 
-
-# Clustering with coding reference:
-If you want to have a dataset with coding genes. You have to use the Extract-cdna-headers.bash script.
-This script can be found in  http://www.github.com/naturalis/apexomes/script/Extract-cdna-headers.bash
-Please change the input directory variable "inputvcfdir" and change the output directory variable "outputdir"
-to the right directories. Go to concat reference for further instructions.
-
-# Clustering with full reference:
-Please check if the file extension contains ".bgz". This is a non existing extension that creates errors when
-used with bgzip. If the extension is present, run the following two commands inside the vcf folder:
-
-```bash
-for file in *.bgz; do
-    mv "$file" "`basename $file .bgz`.gz"
-done
-
-for file in *.bgz.tbi; do
-    mv "$file" "`basename $file .bgz.tbi`.gz.tbi"
-done
-```
-
-After that, run `bgzip -d *.gz` for each file to extract everything one by one. After that, go to concat reference.
-
-# Concat reference:
-If all vcf file are represent. Run `bcftools concat *.vcf > outputname`.
-This is to create a bulky file for all vcf data.
-
-# Merge reference with your data:
-This step is repetitive. First you have to compress the two vcf files you want to merge: For example reference.vcf and Auzoux.vcf
-First you have to run:
-``` bash
-bgzip reference.vcf
-tabix -p vcf reference.vcf.gz
-bgzip Auzoux.vcf
-tabix -p vcf Auzoux.vcf.gz
-```
-This is to compress the files and create indexes so they can be used for merging. The merging can be done by
-`bcftools merge reference.vcf.gz Auzoux.vcf.gz > AuzouxMergedWithRef.vcf`
-This will create a large file for the Auzoux Gorilla and the reference. If you want to add more gorillas, then you have
-to run de bgzip for the new large reference file and your next Gorilla. If you have added all the gorillas you want, go to Clustering.
 
 # Clustering:
 To do clustering you have to convert the vcf file to the plink format file. This can be done by:
