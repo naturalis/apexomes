@@ -100,13 +100,13 @@ to cluster. For example: Do you want to use a reference? Do you want to have a c
 
 # Clustering with coding reference:
 If you want to have a dataset with coding genes. You have to use the Extract-cdna-headers.bash script.
-This script can be found in  http://www.github.com/naturalis/apexomes/script/VcfFilter/Extract-cdna-headers.bash
+This script can be found in  http://www.github.com/naturalis/apexomes/script/Extract-cdna-headers.bash
 Please change the input directory variable "inputvcfdir" and change the output directory variable "outputdir"
 to the right directories. Go to concat reference for further instructions.
 
 # Clustering with full reference:
-Please check if the file extenstion contains ".bgz". This is a non existing extenstion that creates errors. If the extenstion
-is present. Run the following two commands:
+Please check if the file extension contains ".bgz". This is a non existing extension that creates errors when
+used with bgzip. If the extension is present, run the following two commands inside the vcf folder:
 
 ```bash
 for file in *.bgz; do
@@ -134,7 +134,7 @@ bgzip Auzoux.vcf
 tabix -p vcf Auzoux.vcf.gz
 ```
 This is to compress the files and create indexes so they can be used for merging. The merging can be done by
-bcftools merge reference.vcf.gz Auzoux.vcf.gz > AuzouxMergedWithRef.vcf
+`bcftools merge reference.vcf.gz Auzoux.vcf.gz > AuzouxMergedWithRef.vcf`
 This will create a large file for the Auzoux Gorilla and the reference. If you want to add more gorillas, then you have
 to run de bgzip for the new large reference file and your next Gorilla. If you have added all the gorillas you want, go to Clustering.
 
