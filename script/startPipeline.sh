@@ -13,6 +13,7 @@ echo ${ResultDir}
 echo "Data directories:"
 printf '%s\n' "${arDataDir[@]}"
 yesno="y n"
+
 # If the user states an incorrect config datafile, the script will close.
 echo "Is this correct?"
 select ant in ${yesno}
@@ -26,6 +27,7 @@ select ant in ${yesno}
         exit
     fi
 done
+
 # If the result directory excists and the user doesn't want to override the data,
 # the script will close. If the directory doesn't excists, the script create the
 # result directory.
@@ -46,6 +48,7 @@ then
 else
     mkdir ${ResultDir}
 fi
+
 # Script asks if the user want to trim the input files. Result will
 # be stored in the Trim option.
 echo "Do you want to trim the reads?"
