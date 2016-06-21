@@ -1,5 +1,7 @@
 # The `apexomes` project
 
+![Auzoux paper mache gorilla](http://www.museumboerhaave.nl/media/uploads/medialibrary/2015/09/Gorilla_van_Auzoux_groot.jpg "Auzoux paper mache gorilla")
+
 The apexomes project is a [Generade](https://generade.nl/) collaboration between [LUMC](https://www.lumc.nl/), 
 [Hogeschool Leiden](https://www.hsleiden.nl), [Museum Boerhaave](http://www.museumboerhaave.nl/) and 
 [Naturalis Biodiversity Center](http://www.naturalis.nl). In this project a pipeline is built to identify the 
