@@ -47,12 +47,12 @@ different, currently recognized gorilla subspecies. These data were hosted on ft
 `data/vcf`, in VCF format. The different samples in these files - quite a few individuals were sequenced - have
 identifiers that are prefixed with abbreviations that denote the different subspecies:
 
-- Eastern gorilla (G. beringei):
-  - Gbb - Gorilla beringei beringei - Mountain gorilla
-  - Gbg - Gorilla beringei graueri - Eastern lowland gorilla
-- Western gorilla (G. gorilla):
-  - Ggd - Gorilla gorilla diehli - Cross River gorilla
-  - Ggg - Gorilla gorilla gorilla - Western lowland gorilla
+- Eastern gorilla (*G. beringei*):
+  - `Gbb` - *Gorilla beringei beringei* - Mountain gorilla
+  - `Gbg` - *Gorilla beringei graueri* - Eastern lowland gorilla
+- Western gorilla (*G. gorilla*):
+  - `Ggd` - *Gorilla gorilla diehli* - Cross River gorilla
+  - `Ggg` - *Gorilla gorilla gorilla* - Western lowland gorilla
 
 #### References
 1. doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
