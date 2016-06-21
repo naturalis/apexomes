@@ -62,5 +62,4 @@ select ans in ${yesno}
     done
 
 echo "Start pipeline: $(date +%T)"
-cd script
 bash apexomesPipeline.sh ${Trim}
