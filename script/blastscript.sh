@@ -1,4 +1,6 @@
 #!/bin/bash
+# *** THIS IS AN ADDITIONAL SCRIPT NOT USED BY THE PIPELINE ***
+
 #Script using blast+.
 #Uses the remote ncbi database to blast reads.
 #Looks at the single best hit and notes the taxa id.
