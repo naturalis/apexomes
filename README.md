@@ -101,6 +101,9 @@ the used version and the commandline installation command.
  - Freebayes (1.0.2): https://github.com/ekg/freebayes
  - Freebayes compiler: Sudo apt-get install cmake
 
+To (re)install these dependencies on a fresh instance of Ubuntu 14.04LTS, a 
+[puppet manifest](https://github.com/naturalis/puppet-apexomes) is under development.
+
 ## About the data
 
 The cloud instance on which the pipeline is run mounts a separate data volume as `/mnt/data` that contains all data.
