@@ -16,26 +16,38 @@ been running in a cloud instance on Naturalis's [OpenStack](https://stack.natura
 The cloud instance on which the pipeline is run mounts a separate data volume as `/mnt/data` that contains all data.
 The main sources of input data are described in the following sections.
 
+#### Exome data
+
+We have exome data for three individuals. These data were generated using a kit that is intended for humans but
+appears to work fairly well for other, non-human, Great Apes as well. The data were originally posted on a server
+at LUMC, and have since been transferred to the data volume. Note that these data are currently under embargo and 
+as such there is no permission whatsoever to share these data with third parties. Note also that these data are
+the original, and hence most valuable component of this project, which is why they have been MD5 checksummed
+(file stored on the instance), and set to READ ONLY in order to prevent accidental mistakes. The files are in 
+FASTQ format (Illumina dialect for Phred scores) resulting from paired end sequencing, hence for every individual
+there are two files, which is indicated by the `{1,2}` in the file names:
+
+- **Sandra** - `Generade_Gorilla-gorilla-gorilla_F_Sandra_EAZA-Studbook-9_L007_R{1,2}_001.fastq.gz`
+- **individual XXX** - `Generade_107582_GTTTCG_L007_R{1,2}_001.fastq.gz`
+- **individual YYY** - `Generade_V34612_GGCTAC_L007_R{1,2}_001.fastq.gz`
+
 #### Reference genome
 
 Same as previously published research, we use the reference genome [gorGor3.1](http://ensembl.org/Gorilla_gorilla/Info/Index).
 The data in fasta format were downloaded from ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF_000151905.1_gorGor3.1//GCF_000151905.1_gorGor3.1_assembly_structure/Primary_Assembly/assembled_chromosomes/FASTA
 
-#### Exome data
-
-We have exome data for three individuals. These data were generated using a kit that is intended for humans but
-appears to work fairly well for other, non-human, Great Apes as well:
-
-- individual XXX, forward: `Generade_107582_GTTTCG_L007_R1_001.fastq.gz`, reverse: `Generade_107582_GTTTCG_L007_R2_001.fastq.gz`
-- Exome data for Sandra, forward: `Generade_Gorilla-gorilla-gorilla_F_Sandra_EAZA-Studbook-9_L007_R1_001.fastq.gz`, reverse: `Generade_Gorilla-gorilla-gorilla_F_Sandra_EAZA-Studbook-9_L007_R2_001.fastq.gz`
-- individual YYY, forward: `Generade_V34612_GGCTAC_L007_R1_001.fastq.gz`, reverse: `Generade_V34612_GGCTAC_L007_R2_001.fastq.gz`
-
-Note that these data are currently under embargo and as such there is no permission whatsoever to share these data with
-third parties.
-
 #### Previously published SNPs
 
-Used abbreviations for the different gorilla subspecies
+To identify the likely origin of our specimens we need to compare their SNPs with those of other, already identified
+individuals. To this end we contacted [Chris Tyler-Smith](http://www.sanger.ac.uk/people/directory/tyler-smith-chris),
+the senior author on a paper that also took this approach [1]. He indicated that we might have issues pooling our data
+with his team's, because our SNPs are exomic and his had gone through a data reduction step that would like cause the
+intersection between these data sets to be small. He forwarded us to [Yali Xue](http://www.sanger.ac.uk/people/directory/xue-yali),
+who provided us with the data underlying two papers ([2],[3]) that present high-coverage, whole genome sequences of all
+different, currently recognized gorilla subspecies. These data were hosted on ftp://ngs.sanger.ac.uk/scratch/project/team19/gorilla_vcfs, where they have since been removed. Now they are under
+`data/vcf`, in VCF format. The different samples in these files - quite a few individuals were sequenced - have
+identifiers that are prefixed with abbreviations that denote the different subspecies:
+
 - Eastern gorilla (G. beringei):
   - Gbb - Gorilla beringei beringei - Mountain gorilla
   - Gbg - Gorilla beringei graueri - Eastern lowland gorilla
@@ -43,12 +55,12 @@ Used abbreviations for the different gorilla subspecies
   - Ggd - Gorilla gorilla diehli - Cross River gorilla
   - Ggg - Gorilla gorilla gorilla - Western lowland gorilla
 
-# further reading
-- doi:[10.1126/science.aaa3952](http://dx.doi.org/10.1126/science.aaa3952)
-- doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
-- doi:[10.1038/nature12228](http://dx.doi.org/10.1038/nature12228)
+#### References
+1. doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
+2. doi:[10.1126/science.aaa3952](http://dx.doi.org/10.1126/science.aaa3952)
+3. doi:[10.1038/nature12228](http://dx.doi.org/10.1038/nature12228)
 
-# Dependencies
+#### Dependencies
 The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including 
 the used version and the commandline installation command. 
  - Git (1.9.1): sudo apt-get install git
