@@ -19,12 +19,14 @@ The main sources of input data are described in the following sections.
 
 We have exome data for three individuals. These data were generated using a kit that is intended for humans but
 appears to work fairly well for other, non-human, Great Apes as well. The data were originally posted on a server
-at LUMC, and have since been transferred to the data volume. Note that these data are currently under embargo and 
-as such there is no permission whatsoever to share these data with third parties. Note also that these data are
-the original, and hence most valuable component of this project, which is why they have been MD5 checksummed
-(file stored on the instance), and set to READ ONLY in order to prevent accidental mistakes. The files are in 
-FASTQ format (Illumina dialect for Phred scores) resulting from paired end sequencing, hence for every individual
-there are two files, which is indicated by the `{1,2}` in the file names:
+at LUMC (for purely historical reasons and in the interest of completeness, the original location was
+https://barmsijs.lumc.nl/for_Generade/Exomes_Apes/, but this has been removed), and have since been transferred to 
+the data volume. Note that these data are currently under embargo and as such there is no permission whatsoever to 
+share these data with third parties. Note also that these data are the original, and hence most valuable component 
+of this project, which is why they have been MD5 checksummed (file stored on the instance), and set to READ ONLY in 
+order to prevent accidental mistakes. The files are in FASTQ format (Illumina dialect for Phred scores) resulting 
+from paired end sequencing, hence for every individual there are two files, which is indicated by the `{1,2}` in 
+the file names:
 
 - **Sandra** - `Generade_Gorilla-gorilla-gorilla_F_Sandra_EAZA-Studbook-9_L007_R{1,2}_001.fastq.gz`
 - **individual XXX** - `Generade_107582_GTTTCG_L007_R{1,2}_001.fastq.gz`
