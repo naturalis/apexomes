@@ -6,7 +6,7 @@
 #Looks at the single best hit and notes the taxa id.
 
 #Refers to the map where blast+ is installed.
-/home/ubuntu/blast+/ncbi-blast-2.2.31+/bin/blastn \
+blastn \
 #Specifies what kind of blast is performed.
 -task blastn \
 #Defines the used database.
