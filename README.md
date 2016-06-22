@@ -124,7 +124,7 @@ the file names:
 
 - **Sandra** - `Generade_Gorilla-gorilla-gorilla_F_Sandra_EAZA-Studbook-9_L007_R{1,2}_001.fastq.gz`
 - **Thirza** - `Generade_107582_GTTTCG_L007_R{1,2}_001.fastq.gz`
-- **individual YYY** - `Generade_V34612_GGCTAC_L007_R{1,2}_001.fastq.gz`
+- **Azoux** - `Generade_V34612_GGCTAC_L007_R{1,2}_001.fastq.gz`
 
 #### Reference genome (FASTA)
 
