@@ -10,3 +10,6 @@ export INPUT=$DATA/input
 
 # The location of the reference genome, as unzipped FASTA
 export REFERENCE=$INPUT/fasta/Gorilla_gorilla.gorGor3.1.71.dna.toplevel.fa
+
+# The location of the VCF files
+export VCFDIR=$INPUT/vcf/
