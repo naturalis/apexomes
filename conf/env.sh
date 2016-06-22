@@ -18,7 +18,7 @@ export VCFDIR=$INDIR/vcf
 export FASTQDIR=$INDIR/fastq
 
 # The intermediate results dir
-export WORKDIR=/mnt/data/intermediate
+export WORKDIR=$DATADIR/intermediate
 
 # The final results dir
-export OUTDIR=/mnt/data/results
+export OUTDIR=$DATADIR/results
