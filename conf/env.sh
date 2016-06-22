@@ -12,4 +12,7 @@ export INPUT=$DATA/input
 export REFERENCE=$INPUT/fasta/Gorilla_gorilla.gorGor3.1.71.dna.toplevel.fa
 
 # The location of the VCF files
-export VCFDIR=$INPUT/vcf/
+export VCFDIR=$INPUT/vcf
+
+# The location of the FASTQ files
+export FASTQDIR=$INPUT/fastq
