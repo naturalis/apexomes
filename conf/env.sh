@@ -8,11 +8,17 @@ export DATADIR=/mnt/data
 # Where the input data are located
 export INDIR=$DATADIR/input
 
-# The location of the reference genome, as unzipped FASTA
+# The reference genome, as unzipped FASTA
 export REFERENCE=$INDIR/fasta/Gorilla_gorilla.gorGor3.1.71.dna.toplevel.fa
 
-# The location of the VCF files
+# The VCF files, split into chromosomes
 export VCFDIR=$INDIR/vcf
 
-# The location of the FASTQ files
+# The FASTQ files, with subfolders for samples
 export FASTQDIR=$INDIR/fastq
+
+# The intermediate results dir
+export WORKDIR=/mnt/data/intermediate
+
+# The final results dir
+export OUTDIR=/mnt/data/results
