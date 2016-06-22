@@ -100,7 +100,8 @@ the used version and the commandline installation command.
     sudo apt-get install samtools
  - Freebayes (1.0.2): https://github.com/ekg/freebayes
  - Freebayes compiler: Sudo apt-get install cmake
- - Vcftools (v0.1.11): sudo apt-get install vcftools
+ - Vcftools (0.1.11): sudo apt-get install vcftools
+ - BLAST+ (2.2.28+): sudo apt-get install ncbi-blast+
 
 To (re)install these dependencies on a fresh instance of Ubuntu 14.04LTS, a 
 [puppet manifest](https://github.com/naturalis/puppet-apexomes) is under development.
