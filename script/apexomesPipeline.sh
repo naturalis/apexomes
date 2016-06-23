@@ -5,6 +5,8 @@ Trim=$1
 RefGenome="$(cat ../config.txt | egrep -v '#' | head -n 1)"
 ResultDir="$(cat ../config.txt | egrep -v '#' | head -n 2 | tail -n 1)"
 arDataDir="$(cat ../config.txt | egrep -v '#' | awk '{if(NR>2)print}')"
+
+# Iterate over samples
 for monkey in ${arDataDir}; do
 
     # For each sample in the Gorilla data
@@ -15,7 +17,7 @@ for monkey in ${arDataDir}; do
     samplepath=${ResultDir}/${name}
 
     # Create sub directory in result directory if
-    # directory doesn't excist.
+    # directory doesn't exist.
     if [ ! -d "${samplepath}" ]; then
         mkdir ${samplepath}
     fi
