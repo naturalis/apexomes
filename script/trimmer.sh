@@ -3,13 +3,11 @@
 echo "Start trimming: $(date +%T)"
 
 # variables
-#output_path=/mnt/data/pipeline/output_sickle/TestaapjeBLA/
 output_path=$1
 input_path=$2
 reads=(ls ${input_path}/*.fastq.gz)
 input1=${reads[1]}
 input2=${reads[2]}
-
 
 # trimming command
 # pe = Paired end reads are used
