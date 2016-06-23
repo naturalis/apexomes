@@ -26,7 +26,7 @@ for monkey in ${arDataDir}; do
     
         # Please specify trim command.
         bash ./trimmer.sh ${samplepath} ${monkey}
-	trimextension="out_trimmed_p"
+        trimextension="out_trimmed_p"
     else
     
         # Move reads to resultfolder so mapping script
@@ -35,7 +35,7 @@ for monkey in ${arDataDir}; do
         # PLEASE CHECK COMMAND
         cp ${monkey}/*.gz ${samplepath}/
         sleep 10
-	trimextension="a"
+        trimextension="a"
     fi
     
     # Do the mapping
