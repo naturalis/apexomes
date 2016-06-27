@@ -37,23 +37,28 @@ If you want to have a dataset only for coding genes (i.e. exomic loci), use the
 [Extract-cdna-headers.bash](script/Extract-cdna-headers.bash) script. Please change the input directory variable 
 "inputvcfdir" and change the output directory variable "outputdir" to the right directories.
 
-#### Merge reference with your data
-This step is repetitive. First you have to compress the two vcf files you want to merge, for example `reference.vcf` 
-and `Auzoux.vcf`. In order to do this, first you have to run:
+#### Merge reference with obtained data
+Compress and index all the vcf files that need to be merged:
 ``` bash
-# compress the reference
+# compress and index the reference vcf
 bgzip reference.vcf
-# index the reference
 tabix -p vcf reference.vcf.gz
-# compress the individual
+# compress and index the individual vcfs
+#Sandra
+bgzip Sandra.vcf
+tabix -p vcf Sandra.vcf.gz
+#Thirza
+bgzip Thirza.vcf
+tabix -p vcf Thirza.vcf.gz
+#Auzoux
 bgzip Auzoux.vcf
-# index the individual
 tabix -p vcf Auzoux.vcf.gz
 ```
-This is to compress the files and create indexes so they can be used for merging. The merging can be done by
-`bcftools merge reference.vcf.gz Auzoux.vcf.gz > AuzouxMergedWithRef.vcf`
-This will create a large file for the Auzoux Gorilla and the reference. If you want to add more gorillas, then you have
-to run de bgzip for the new large reference file and your next Gorilla.
+To merge the above vcfs use
+``` bash
+bcftools merge reference.vcf.gz Sandra.vcf.gz Thirza.vcf.gz Auzoux.vcf.gz > Ref_STA.vcf
+```
+This will create a large vcf file including data for both the reference gorillas and the specimens from this study.
 
 #### Clustering
 To do the clustering itself you have to convert the vcf file to the plink format file. This can be done by:
@@ -103,6 +108,7 @@ the used version and the commandline installation command.
  - Vcftools (0.1.11): sudo apt-get install vcftools
  - BLAST+ (2.2.28+): sudo apt-get install ncbi-blast+
  - PLINK (1.07) : http://pngu.mgh.harvard.edu/~purcell/plink/dist/plink-1.07-x86_64.zip
+ -  BCFTOOLS (1.3.1): sudo apt-get install bcftools 
 
 To (re)install these dependencies on a fresh instance of Ubuntu 14.04LTS, a 
 [puppet manifest](https://github.com/naturalis/puppet-apexomes) is under development.
