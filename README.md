@@ -173,6 +173,7 @@ Once all vcf file are present, you can run `bcftools concat *.vcf > outputname`.
 This is create a bulky, concatenated file for all vcf data.
 
 #### References
-1. doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
-2. doi:[10.1126/science.aaa3952](http://dx.doi.org/10.1126/science.aaa3952)
-3. doi:[10.1038/nature12228](http://dx.doi.org/10.1038/nature12228)
+1. Scally, A., Yngvadottir, B., Xue, Y., Ayub, Q., Durbin, R., & Tyler-Smith, C. (2013). A genome-wide survey of genetic variation in gorillas using reduced representation sequencing. PloS one, 8(6), e65066. doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
+2. Xue, Y., Prado-Martinez, J., Sudmant, P. H., Narasimhan, V., Ayub, Q., Szpak, M., ... & De Manuel, M. (2015). Mountain gorilla genomes reveal the impact of long-term population decline and inbreeding. Science, 348(6231), 242-245. doi:[10.1126/science.aaa3952](http://dx.doi.org/10.1126/science.aaa3952)
+3. Prado-Martinez, J., Sudmant, P. H., Kidd, J. M., Li, H., Kelley, J. L., Lorente-Galdos, B., ... & Cagan, A. (2013). Great ape genetic diversity and population history. Nature, 499(7459), 471-475. doi:[10.1038/nature12228](http://dx.doi.org/10.1038/nature12228)
+
