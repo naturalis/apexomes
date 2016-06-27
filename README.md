@@ -61,7 +61,7 @@ bcftools merge reference.vcf.gz Sandra.vcf.gz Thirza.vcf.gz Auzoux.vcf.gz > Ref_
 This will create a large vcf file including data for both the reference gorillas and the specimens from this study.
 
 #### Selection of SNP positions **(optional)**
-Even though the (genomic) dataset of Xue et al. (Ref. #3) was filtered for exomic loci (**Merge reference with obtained data**), a substantial number of SNPs did not overlap between both studies. The cause for this is thus far unknown; possibly it has to with differences in methodology. Without the raw data of Xue et al. it might be impossible to know for sure. However, one specimen, a.k.a. Sandra, was included in both studies to filter out mismatching SNP positions and as such be used to 'normalise' the merged dataset (vcf).
+Even though the (genomic) dataset of Xue et al. (Ref. #3) was filtered for exomic loci (**Merge reference with obtained data**), a substantial number of SNPs did not overlap between both studies. The cause for this is not yet known; possibly it has to with differences in methodology. Without the raw data of Xue et al. it might be impossible to know for sure. However, one specimen, a.k.a. Sandra, was included in both studies, so mismatching SNP positions can be filtered out in order to 'normalise' the merged dataset (vcf).
 
 Create a `'--positions'` file (to be used with vcftools subsequently) that excludes empty SNP positions and includes only those positions for which both 'Sandras' are identical
 ``` bash
@@ -77,7 +77,7 @@ tail -n +95 Ref_STA.vcf | grep -v ":.:.:.:.:.:" | awk '{print $1,$2,$32,$54,$55,
 head -n100 Ref_STA.vcf | egrep "CHROM" | tr '\t' '\n' | cat -n 
 (optional): | egrep "CHROM|POS|Sandra|Thirza|Azoux")
 ```
-Create a new 'normalised' VCF based on the selected SNP positions:
+Create a new 'normalised' VCF based on the selected SNP positions ('--postions' file):
 ``` bash
 vcftools --vcf  Ref_STA.vcf --positions SNP.txt --recode
 #it doesn't seem to possible to provide a name for the outfile so:
