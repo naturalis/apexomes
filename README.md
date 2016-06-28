@@ -80,36 +80,31 @@ head -n100 Ref_STA.vcf | egrep "CHROM" | tr '\t' '\n' | cat -n
 Create a new 'normalised' VCF based on the selected SNP positions ('--postions' file):
 ``` bash
 vcftools --vcf  Ref_STA.vcf --positions SNP.txt --recode
-#it doesn't seem to possible to provide a name for the outfile so:
+#it doesn't seem possible to provide a name for the outfile, so choose a meaningful name:
 mv out.recode.vcf Ref_STA_select.vcf
 ```
 #### Clustering
-To do the clustering itself you have to convert the vcf file to the plink format file. This can be done by:
+Generate an **identity-by-descent** report:
 ``` bash
-vcftools --vcf INPUTFILE.vcf --plink --out  OUTPUTFILE.raw
+plink --vcf Ref_STA_select.vcf --double-id --allow-extra-chr --genome --noweb --allow-no-sex --out OUTPUTFILE.raw
+# Using '--allow-extra-chr' prevents SNP positions on chromosomes with non-standard numbers (such as 2a and 2b) from being disregarded.
 ```
-
-Now you have to run two plink commands:
+Perform **multi dimensional scaling (MDS)** analysis:
 ``` bash
-plink --file OUTPUTFILE.raw --genome --noweb --allow-no-sex --out OUTPUTFILE.raw
-plink --file OUTPUTFILE.raw --read-genome OUTPUTFILE.raw.genome --cluster --mds-plot 2 --noweb
+plink --vcf Ref_STA_select.vcf --double-id --allow-extra-chr --read-genome OUTPUTFILE.raw.genome --cluster --mds-plot 2 --noweb
+# the output file (used hereafter for plot) is plink.mds
+# to check that the data has been normalised, ie. both Sandras now indeed specify the same point:
+egrep "Sandra" plink.mds
 ```
-
-After that you can load the result file into R and visualize it.
-Example code:
+The result (plink.mds) can be visualised in R using:
 ``` r
 getwd()
 d <- read.table("plink.mds", h=T)
-print("Auzoux can have different locations")
-d$pop = factor(c(rep("GBB", 7), rep("GBG", 9), rep("GGD", 1), rep("GGG", 27), rep("Sandra"), "Thirza", "Auzoux"))
-d$pop
-refnames <- c( "GBB - Eastern Gorilla", "GBG - Eastern Gorilla", "GGD - Western Gorilla", "GGG - Western Gorilla")
-plot(d$C1, d$C2, col=as.integer(d$pop), pch=19, xlab="Dimension 1", ylab="Dimension 2", main = "MDS analysis on chromosome 1 reference, Sandra, Thirza and Auzoux ")
-legend("topleft", c("Auzoux", refnames, "Sandra", "Thirza"), pch=19, col=c(1,2,3,4, 5, 6, 7))
-text(d$C1, d$C2, labels=c(rep(NA, 22), "Sandra", "Naam hier"), pos=2)
-text(d$C1, d$C2, labels=c(rep(NA, 44), "Sandra", NA), pos=2)
-text(d$C1, d$C2, labels=c(rep(NA, 45), "Thirza", NA), pos=1)
-text(d$C1, d$C2, labels=c(rep(NA, 46), "Auzoux", NA), pos=1)`
+d$pop = factor(c(rep("GBB", 7), rep("GBG", 9), rep("GGD", 1), rep("GGG", 27), rep("Sandra", 1), rep("Thirza", 1), rep("Azoux", 1)))
+d$col = factor(c(rep("red", 7), rep("green", 9), rep("pink", 1), rep("blue", 27), rep("orange", 1), rep("yellow", 1), rep("black", 1)))
+plot(d$C1, d$C2, col=as.character(d$col), pch=19, xlab="PC 1", ylab="PC 2", main = "MDS: Azoux, Blijdorp and Gorilla ssp")
+legend("topleft", c("GBB Mountain East", "GBG Lowland East", "GGD Cross River West", "GGG Lowland West","Sandra Blijdorp","Thirza Blijdorp","Azoux Gabon?"), pch=19, col=c("red","green","pink","blue","orange","yellow","black"), cex=0.8)
+
 ```
 
 #### Dependencies
@@ -130,7 +125,7 @@ the used version and the commandline installation command.
  - Freebayes compiler: Sudo apt-get install cmake
  - Vcftools (0.1.11): sudo apt-get install vcftools
  - BLAST+ (2.2.28+): sudo apt-get install ncbi-blast+
- - PLINK (1.07) : http://pngu.mgh.harvard.edu/~purcell/plink/dist/plink-1.07-x86_64.zip
+ - PLINK (1.90b3.37) : https://www.cog-genomics.org/static/bin/plink160607/plink_linux_x86_64.zip
  -  BCFTOOLS (1.3.1): sudo apt-get install bcftools 
 
 To (re)install these dependencies on a fresh instance of Ubuntu 14.04LTS, a 
