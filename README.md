@@ -107,7 +107,11 @@ plot(d$C1, d$C2, col=as.character(d$col), pch=19, xlab="PC 1", ylab="PC 2", main
 legend("topleft", c("GBB Mountain East", "GBG Lowland East", "GGD Cross River West", "GGG Lowland West","Sandra Blijdorp","Thirza Blijdorp","Azoux Gabon?"), pch=19, col=c("red","green","pink","blue","orange","yellow","black"), cex=0.8)
 dev.copy2pdf(file="Gorilla_MDS.pdf", width = 7, height = 8)
 ```
+<<<<<<< HEAD
 ![Gorilla_MDS.pdf](https://github.com/naturalis/apexomes/files/337012/Gorilla_MDS.pdf "Gorilla_MDS.pdf")
+=======
+![Gorilla_MDS.pdf](https://rawgit.com/naturalis/apexomes/master/Gorilla_MDS.pdf)
+>>>>>>> 42896bdee639bbf439ee2c80d04bc525fafdefa1
 
 #### Dependencies
 The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including 
