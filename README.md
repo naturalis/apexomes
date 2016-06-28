@@ -98,13 +98,14 @@ egrep "Sandra" plink.mds
 ```
 The result (plink.mds) can be visualised in R using:
 ``` r
-getwd()
+setwd("path/to/location")
+# set working directory to the location of plink.mds
 d <- read.table("plink.mds", h=T)
 d$pop = factor(c(rep("GBB", 7), rep("GBG", 9), rep("GGD", 1), rep("GGG", 27), rep("Sandra", 1), rep("Thirza", 1), rep("Azoux", 1)))
 d$col = factor(c(rep("red", 7), rep("green", 9), rep("pink", 1), rep("blue", 27), rep("orange", 1), rep("yellow", 1), rep("black", 1)))
 plot(d$C1, d$C2, col=as.character(d$col), pch=19, xlab="PC 1", ylab="PC 2", main = "MDS: Azoux, Blijdorp and Gorilla ssp")
 legend("topleft", c("GBB Mountain East", "GBG Lowland East", "GGD Cross River West", "GGG Lowland West","Sandra Blijdorp","Thirza Blijdorp","Azoux Gabon?"), pch=19, col=c("red","green","pink","blue","orange","yellow","black"), cex=0.8)
-
+dev.copy2pdf(file="Gorilla_MDS.pdf", width = 7, height = 8)
 ```
 
 #### Dependencies
