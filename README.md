@@ -109,6 +109,7 @@ dev.copy2pdf(file="Gorilla_MDS.pdf", width = 7, height = 8)
 ```
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16419725/11e5c7c2-3d4f-11e6-836b-d9d194c3654a.png" align="left" height="600" width="525" ></a>  
 
+
 #### Dependencies
 The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including 
 the used version and the commandline installation command. 
