@@ -98,6 +98,24 @@ identifiers that are prefixed with abbreviations that denote the different subsp
   - `Ggd` - *Gorilla gorilla diehli* - [Cross River gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=406788)
   - `Ggg` - *Gorilla gorilla gorilla* - [Western lowland gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9595)
 
+**Note** - Please check if the file extension contains ".bgz". This is a non-standard extension that for reasons unbeknownst 
+to us were used by the Sanger centre. This extension creates errors when used with bgzip. If the extension is present, run the
+following two commands inside the vcf folder:
+
+```bash
+for file in *.bgz; do
+    mv "$file" "`basename $file .bgz`.gz"
+done
+
+for file in *.bgz.tbi; do
+    mv "$file" "`basename $file .bgz.tbi`.gz.tbi"
+done
+```
+
+After that, the files can be extracted one by one by running `bgzip -d *.gz`.
+Once all vcf file are present, you can run `bcftools concat *.vcf > outputname`.
+This is create a bulky, concatenated file for all vcf data.
+
 After the pipeline is finished you will have a VCF file to use for further downstream analysis, i.e. clustering
 of the specimen with other reference specimens. Clustering can be done with many combinations with datasets. To begin 
 with clustering you must determine what exactly you want to cluster. For example: Do you want to use a reference? 
@@ -205,23 +223,6 @@ dev.copy2pdf(file="Gorilla_West_MDS.pdf", width = 7, height = 8)
 
 
 
-**Note** - Please check if the file extension contains ".bgz". This is a non-standard extension that for reasons unbeknownst 
-to us were used by the Sanger centre. This extension creates errors when used with bgzip. If the extension is present, run the
-following two commands inside the vcf folder:
-
-```bash
-for file in *.bgz; do
-    mv "$file" "`basename $file .bgz`.gz"
-done
-
-for file in *.bgz.tbi; do
-    mv "$file" "`basename $file .bgz.tbi`.gz.tbi"
-done
-```
-
-After that, the files can be extracted one by one by running `bgzip -d *.gz`.
-Once all vcf file are present, you can run `bcftools concat *.vcf > outputname`.
-This is create a bulky, concatenated file for all vcf data.
 
 #### References
 1. Scally, A., Yngvadottir, B., Xue, Y., Ayub, Q., Durbin, R., & Tyler-Smith, C. (2013). A genome-wide survey of genetic variation in gorillas using reduced representation sequencing. PloS one, 8(6), e65066. doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
