@@ -220,7 +220,7 @@ dev.copy2pdf(file="Gorilla_West_MDS.pdf", width = 7, height = 8)
 ```
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16446353/63677cec-3de7-11e6-9bae-42a3ef6afa92.png" height="600" width="525" ></a>
 
-This MDS plot shows Cross River within (not separated from) the Western lowland gorilla point cloud and no association with 'Auzoux'. The three specimens of this study seem separated from this point cloud (GGG). To assume an error in the described method would nevertheless be an hastily conclusion; the orange dot for Sandra in fact is a blue dot as well. In our opinion these data merely expose another part of the diversity of the Western lowland gorilla.
+This MDS plot shows Cross River within (not separated from) the Western lowland gorilla point cloud and no association with 'Auzoux'. The three specimens of this study seem separated from this point cloud (GGG). To assume a methodological error might be an hastily conclusion; the orange dot for Sandra in fact is a blue dot as well. In our opinion these data merely expose another part of the diversity of the Western lowland gorilla.
 
 
 #### References
