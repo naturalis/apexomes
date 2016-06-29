@@ -109,6 +109,28 @@ dev.copy2pdf(file="Gorilla_MDS.pdf", width = 7, height = 8)
 ```
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16419725/11e5c7c2-3d4f-11e6-836b-d9d194c3654a.png" height="600" width="525" ></a>
 
+The MDS plot above potentially indicates an association between the 'Auzoux' specimen and the Cross River gorilla. Assignment of 'Auzoux' to the western gorilla, Gorilla gorilla, is in agreement with its presumed collection locality of Gabon. Now it has been shown that all three individuals (Sandra, Thirza, 'Auzoux') belong to the western gorilla, more SNP positions could become available by excluding (*Gorilla beringei*) specimens.
+
+To remove *Gorilla beringei* spp. from Ref_STA.vcf:
+``` bash
+vcf-subset -c Ggd-F-B646_Nyango,Ggg-F-9749_Kowali,Ggg-M-9750_Azizi,Ggg-F-9751_Bulera,Ggg-F-9752_Suzie,Ggg-F-9753_Kokomo,Ggg-F-A930_Sandra,Ggg-M-A931_Banjo,Ggg-F-A932_Mimi,Ggg-F-A933_Dian,Ggg-F-A934_Delphi,Ggg-F-A936_Coco,Ggg-F-A937_Kolo,Ggg-F-A962_Amani,Ggg-F-B642_Akiba_Beri,Ggg-F-B643_Choomba,Ggg-F-B644_Paki,Ggg-F-B647_Anthal,Ggg-F-B650_Katie,Ggg-F-KB3782_Vila,Ggg-F-KB3784_Dolly,Ggg-F-KB4986_Katie,Ggg-F-KB5792_Carolyn,Ggg-F-KB5852_Helen,Ggg-F-KB6039_Oko,Ggg-F-KB7973_Porta,Ggg-M-X00108_Abe,Ggg-M-X00109_Tzambo,Blij_Sandra,Blij_Thirza,Boer_Azoux Ref_STA.vcf > West_only.vcf
+```
+For subsequent **SNP selection** and **Clustering** see paragraphs above.
+Notice that by removing the eastern gorilla specimens, the column numbers of the taxa also changed, ie:
+``` bash
+tail -n +96 West_only.vcf | grep -v ":.:.:.:.:.:" | awk '{print $1,$2,$16,$38,$39,$40}' | awk -F":" '{print $1,$7,$13,$19}' | awk '{print $1,$2,$3,$5,$7,$9}' | awk '{if ($3==$4) print $0}' | awk 'BEGIN{print "CHROM\tPOS"};{print $1"\t"$2}' > SNP_West_only.txt
+```
+The updated R script:
+``` r
+setwd("path/to/location")
+# set working directory to the location of plink.mds
+d$pop = factor(c(rep("GGD", 1), rep("GGG", 27), rep("Sandra", 1), rep("Thirza", 1), rep("Azoux", 1)))
+d$col = factor(c(rep("pink", 1), rep("blue", 27), rep("orange", 1), rep("yellow", 1), rep("black", 1)))
+plot(d$C1, d$C2, col=as.character(d$col), pch=19, xlab="PC 1", ylab="PC 2", main = "MDS: Azoux, Blijdorp and Gorilla West ssp")
+legend("topleft", c("GGD Cross River West", "GGG Lowland West","Sandra Blijdorp","Thirza Blijdorp","Azoux Gabon?"), pch=19, col=c("pink","blue","orange","yellow","black"), cex=0.8)
+dev.copy2pdf(file="Gorilla_West_MDS.pdf", width = 7, height = 8)
+```
+
 #### Dependencies
 The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including 
 the used version and the commandline installation command. 
