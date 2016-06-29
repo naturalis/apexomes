@@ -61,7 +61,7 @@ bcftools merge reference.vcf.gz Sandra.vcf.gz Thirza.vcf.gz Auzoux.vcf.gz > Ref_
 This will create a large vcf file including data for both the reference gorillas and the specimens from this study.
 
 #### Selection of SNP positions **(optional)**
-Even though the (genomic) dataset of Xue et al. (Ref. #3) was filtered for exomic loci (**Merge reference with obtained data**), a substantial number of SNPs did not overlap with this study. It is currently unclear what causes this discrepancy. For verification purposes, one specimen, a.k.a. Sandra, was included in both studies. SNP positions that showed a mismatch between both Sandras were excluded, to 'normalise' the merged (vcf) dataset.
+Even though the (genomic) dataset of Xue et al. (Ref. #3) was filtered for exomic loci (**Merge reference with obtained data**), a substantial number of SNPs did not overlap with this study. It is currently unclear what causes this discrepancy. For verification purposes, one specimen, a.k.a. Sandra, was included in both studies. SNP positions that showed a mismatch between both Sandras were excluded in order to 'normalise' the merged (vcf) dataset.
 
 Create a `'--positions'` file (to be used with vcftools subsequently) that excludes empty SNP positions and includes only those positions for which both 'Sandras' are identical
 ``` bash
