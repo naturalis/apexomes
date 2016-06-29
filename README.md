@@ -198,7 +198,7 @@ dev.copy2pdf(file="Gorilla_MDS.pdf", width = 7, height = 8)
 ```
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16446644/f8d36cfe-3de8-11e6-9b74-e39440d9dbfd.png" height="600" width="525" ></a>
 
-The MDS plot above potentially indicates an association between the 'Auzoux' specimen and the Cross River gorilla. Assignment of 'Auzoux' to the western gorilla, *Gorilla gorilla*, is in agreement with its presumed collection locality of Gabon. Now it has been shown that all three individuals (Sandra, Thirza, 'Auzoux') belong to the western gorilla, more SNP positions might become available by excluding *Gorilla beringei* specimens.
+This MDS plot indicates a potential association between the 'Auzoux' specimen and the Cross River gorilla. Assignment of 'Auzoux' to the Western gorilla, *Gorilla gorilla*, is in agreement with its presumed collection locality of Gabon. Now it has been shown that all three individuals (Sandra, Thirza, 'Auzoux') belong to the Western gorilla, more SNP positions might become available by excluding Eastern gorilla ( *Gorilla beringei* ) specimens.
 
 To remove *Gorilla beringei* spp. from Ref_STA.vcf:
 ``` bash
@@ -221,7 +221,7 @@ dev.copy2pdf(file="Gorilla_West_MDS.pdf", width = 7, height = 8)
 ```
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16446353/63677cec-3de7-11e6-9bae-42a3ef6afa92.png" height="600" width="525" ></a>
 
-
+This MDS plot shows Cross River within (not separated from) the Western lowland gorilla point cloud and no association with 'Auzoux'. The three specimens of this study seem separated from this point cloud (GGG). To assume an error in the described method would nevertheless be an hastily conclusion; the orange dot for Sandra in fact is a blue dot as well. In our opinion these data merely expose another part of the diversity of the Western lowland gorilla.
 
 
 #### References
