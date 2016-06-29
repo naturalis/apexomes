@@ -107,7 +107,7 @@ plot(d$C1, d$C2, col=as.character(d$col), pch=19, xlab="PC 1", ylab="PC 2", main
 legend("topleft", c("GBB Mountain East", "GBG Lowland East", "GGD Cross River West", "GGG Lowland West","Sandra Blijdorp","Thirza Blijdorp","Azoux Gabon?"), pch=19, col=c("red","green","pink","blue","orange","yellow","black"), cex=0.8)
 dev.copy2pdf(file="Gorilla_MDS.pdf", width = 7, height = 8)
 ```
-<a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16419725/11e5c7c2-3d4f-11e6-836b-d9d194c3654a.png" height="600" width="525" ></a>
+<a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16446644/f8d36cfe-3de8-11e6-9b74-e39440d9dbfd.png" height="600" width="525" ></a>
 
 The MDS plot above potentially indicates an association between the 'Auzoux' specimen and the Cross River gorilla. Assignment of 'Auzoux' to the western gorilla, Gorilla gorilla, is in agreement with its presumed collection locality of Gabon. Now it has been shown that all three individuals (Sandra, Thirza, 'Auzoux') belong to the western gorilla, more SNP positions could become available by excluding (*Gorilla beringei*) specimens.
 
