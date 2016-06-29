@@ -109,7 +109,7 @@ dev.copy2pdf(file="Gorilla_MDS.pdf", width = 7, height = 8)
 ```
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16446644/f8d36cfe-3de8-11e6-9b74-e39440d9dbfd.png" height="600" width="525" ></a>
 
-The MDS plot above potentially indicates an association between the 'Auzoux' specimen and the Cross River gorilla. Assignment of 'Auzoux' to the western gorilla, Gorilla gorilla, is in agreement with its presumed collection locality of Gabon. Now it has been shown that all three individuals (Sandra, Thirza, 'Auzoux') belong to the western gorilla, more SNP positions could become available by excluding (*Gorilla beringei*) specimens.
+The MDS plot above potentially indicates an association between the 'Auzoux' specimen and the Cross River gorilla. Assignment of 'Auzoux' to the western gorilla, *Gorilla gorilla*, is in agreement with its presumed collection locality of Gabon. Now it has been shown that all three individuals (Sandra, Thirza, 'Auzoux') belong to the western gorilla, more SNP positions might become available by excluding *Gorilla beringei* specimens.
 
 To remove *Gorilla beringei* spp. from Ref_STA.vcf:
 ``` bash
