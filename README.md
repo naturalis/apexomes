@@ -27,7 +27,78 @@ The pipeline works with paired end reads. It needs exactly two files, one forwar
 This configuration file stores the location of the reference genome, the location of the reads and the desired 
 output directories. This file should be edited before running the pipeline.
 
-Once the pipeline is finished you will have a VCF file to use for further downstream analysis, i.e. clustering
+#### Dependencies
+The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including 
+the used version and the commandline installation command. 
+ - Git (1.9.1): sudo apt-get install git
+ - Sickle (1.33): git clone https://github.com/najoshi/sickle
+ - Make (3.81): sudo apt-get install make
+ - Gcc (4.8.4): sudo apt-get install gcc
+ - Zlib1g-dev (1.26): sudo apt-get install zlib1g-dev
+ - python-pip (2.7.6): sudo apt-get install python-pip
+ - python-dev (2.7.6): sudo apt-get install python-dev
+ - ftp-cloudfs (0.34): sudo pip install ftp-cloudfs python-keystoneclient python-swiftclient 
+ - BWA (0.7.5a-r405): sudo apt-get install bwa
+ - SAMtools (0.1.19-96b5f2294a): git clone git://github.com/samtools/samtools.git   
+    sudo apt-get install samtools
+ - Freebayes (1.0.2): https://github.com/ekg/freebayes
+ - Freebayes compiler: Sudo apt-get install cmake
+ - Vcftools (0.1.11): sudo apt-get install vcftools
+ - BLAST+ (2.2.28+): sudo apt-get install ncbi-blast+
+ - PLINK (1.90b3.37) : https://www.cog-genomics.org/static/bin/plink160607/plink_linux_x86_64.zip
+ -  BCFTOOLS (1.3.1): sudo apt-get install bcftools 
+
+To (re)install these dependencies on a fresh instance of Ubuntu 14.04LTS, a 
+[puppet manifest](https://github.com/naturalis/puppet-apexomes) is under development.
+
+## About the data
+
+The cloud instance on which the pipeline is run mounts a separate data volume as `/mnt/data` that contains all data.
+The main sources of input data are described in the following sections.
+
+#### Exome data (FASTQ)
+
+We have exome data for three individuals. These data were generated using a kit that is intended for humans but
+appears to work fairly well for other, non-human, Great Apes as well. The data were originally posted on a server
+at LUMC (for purely historical reasons and in the interest of completeness, the original location was
+https://barmsijs.lumc.nl/for_Generade/Exomes_Apes/, but this has been removed), and have since been transferred to 
+the data volume. Note that these data are currently under embargo and as such there is no permission whatsoever to 
+share these data with third parties. Note also that these data are the original, and hence most valuable component 
+of this project, which is why they have been MD5 checksummed (file stored on the instance), and set to READ ONLY in 
+order to prevent accidental mistakes. The files are in FASTQ format (Illumina dialect for Phred scores) resulting 
+from paired end sequencing, hence for every individual there are two files, which is indicated by the `{1,2}` in 
+the file names:
+
+- **Sandra** - `Generade_Gorilla-gorilla-gorilla_F_Sandra_EAZA-Studbook-9_L007_R{1,2}_001.fastq.gz`
+- **Thirza** - `Generade_107582_GTTTCG_L007_R{1,2}_001.fastq.gz`
+- **Azoux** - `Generade_V34612_GGCTAC_L007_R{1,2}_001.fastq.gz`
+
+#### Reference genome (FASTA)
+
+Same as previously published research, we use the reference *Gorilla gorilla* genome 
+[gorGor3.1, release 71](http://ensembl.org/Gorilla_gorilla/Info/Index).
+The data in fasta format were downloaded from http://ftp.ensembl.org/pub/release-71/fasta/gorilla_gorilla/dna/
+
+#### Previously published SNPs (VCF)
+
+To identify the likely origin of our specimens we need to compare their SNPs with those of other, already identified
+individuals. To this end we contacted [Chris Tyler-Smith](http://www.sanger.ac.uk/people/directory/tyler-smith-chris),
+the senior author on a paper that also took this approach [1]. He indicated that we might have issues pooling our data
+with his team's, because our SNPs are exomic and his had gone through a data reduction step that would like cause the
+intersection between these data sets to be small. He forwarded us to [Yali Xue](http://www.sanger.ac.uk/people/directory/xue-yali),
+who provided us with the data underlying two papers ([2],[3]) that present high-coverage, whole genome sequences of all
+different, currently recognized gorilla subspecies. These data were hosted on ftp://ngs.sanger.ac.uk/scratch/project/team19/gorilla_vcfs, where they have since been removed. Now they are under
+`data/vcf`, in VCF format. The different samples in these files - quite a few individuals were sequenced - have
+identifiers that are prefixed with abbreviations that denote the different subspecies:
+
+- Eastern gorilla (*G. beringei*):
+  - `Gbb` - *Gorilla beringei beringei* - [Mountain gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=1159185)
+  - `Gbg` - *Gorilla beringei graueri* - [Eastern lowland gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=46359)
+- Western gorilla (*G. gorilla*):
+  - `Ggd` - *Gorilla gorilla diehli* - [Cross River gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=406788)
+  - `Ggg` - *Gorilla gorilla gorilla* - [Western lowland gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9595)
+
+After the pipeline is finished you will have a VCF file to use for further downstream analysis, i.e. clustering
 of the specimen with other reference specimens. Clustering can be done with many combinations with datasets. To begin 
 with clustering you must determine what exactly you want to cluster. For example: Do you want to use a reference? 
 Do you want to have a coding reference or raw reference? 
@@ -132,76 +203,7 @@ dev.copy2pdf(file="Gorilla_West_MDS.pdf", width = 7, height = 8)
 ```
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16446353/63677cec-3de7-11e6-9bae-42a3ef6afa92.png" height="600" width="525" ></a>
 
-#### Dependencies
-The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including 
-the used version and the commandline installation command. 
- - Git (1.9.1): sudo apt-get install git
- - Sickle (1.33): git clone https://github.com/najoshi/sickle
- - Make (3.81): sudo apt-get install make
- - Gcc (4.8.4): sudo apt-get install gcc
- - Zlib1g-dev (1.26): sudo apt-get install zlib1g-dev
- - python-pip (2.7.6): sudo apt-get install python-pip
- - python-dev (2.7.6): sudo apt-get install python-dev
- - ftp-cloudfs (0.34): sudo pip install ftp-cloudfs python-keystoneclient python-swiftclient 
- - BWA (0.7.5a-r405): sudo apt-get install bwa
- - SAMtools (0.1.19-96b5f2294a): git clone git://github.com/samtools/samtools.git   
-    sudo apt-get install samtools
- - Freebayes (1.0.2): https://github.com/ekg/freebayes
- - Freebayes compiler: Sudo apt-get install cmake
- - Vcftools (0.1.11): sudo apt-get install vcftools
- - BLAST+ (2.2.28+): sudo apt-get install ncbi-blast+
- - PLINK (1.90b3.37) : https://www.cog-genomics.org/static/bin/plink160607/plink_linux_x86_64.zip
- -  BCFTOOLS (1.3.1): sudo apt-get install bcftools 
 
-To (re)install these dependencies on a fresh instance of Ubuntu 14.04LTS, a 
-[puppet manifest](https://github.com/naturalis/puppet-apexomes) is under development.
-
-## About the data
-
-The cloud instance on which the pipeline is run mounts a separate data volume as `/mnt/data` that contains all data.
-The main sources of input data are described in the following sections.
-
-#### Exome data (FASTQ)
-
-We have exome data for three individuals. These data were generated using a kit that is intended for humans but
-appears to work fairly well for other, non-human, Great Apes as well. The data were originally posted on a server
-at LUMC (for purely historical reasons and in the interest of completeness, the original location was
-https://barmsijs.lumc.nl/for_Generade/Exomes_Apes/, but this has been removed), and have since been transferred to 
-the data volume. Note that these data are currently under embargo and as such there is no permission whatsoever to 
-share these data with third parties. Note also that these data are the original, and hence most valuable component 
-of this project, which is why they have been MD5 checksummed (file stored on the instance), and set to READ ONLY in 
-order to prevent accidental mistakes. The files are in FASTQ format (Illumina dialect for Phred scores) resulting 
-from paired end sequencing, hence for every individual there are two files, which is indicated by the `{1,2}` in 
-the file names:
-
-- **Sandra** - `Generade_Gorilla-gorilla-gorilla_F_Sandra_EAZA-Studbook-9_L007_R{1,2}_001.fastq.gz`
-- **Thirza** - `Generade_107582_GTTTCG_L007_R{1,2}_001.fastq.gz`
-- **Azoux** - `Generade_V34612_GGCTAC_L007_R{1,2}_001.fastq.gz`
-
-#### Reference genome (FASTA)
-
-Same as previously published research, we use the reference *Gorilla gorilla* genome 
-[gorGor3.1, release 71](http://ensembl.org/Gorilla_gorilla/Info/Index).
-The data in fasta format were downloaded from http://ftp.ensembl.org/pub/release-71/fasta/gorilla_gorilla/dna/
-
-#### Previously published SNPs (VCF)
-
-To identify the likely origin of our specimens we need to compare their SNPs with those of other, already identified
-individuals. To this end we contacted [Chris Tyler-Smith](http://www.sanger.ac.uk/people/directory/tyler-smith-chris),
-the senior author on a paper that also took this approach [1]. He indicated that we might have issues pooling our data
-with his team's, because our SNPs are exomic and his had gone through a data reduction step that would like cause the
-intersection between these data sets to be small. He forwarded us to [Yali Xue](http://www.sanger.ac.uk/people/directory/xue-yali),
-who provided us with the data underlying two papers ([2],[3]) that present high-coverage, whole genome sequences of all
-different, currently recognized gorilla subspecies. These data were hosted on ftp://ngs.sanger.ac.uk/scratch/project/team19/gorilla_vcfs, where they have since been removed. Now they are under
-`data/vcf`, in VCF format. The different samples in these files - quite a few individuals were sequenced - have
-identifiers that are prefixed with abbreviations that denote the different subspecies:
-
-- Eastern gorilla (*G. beringei*):
-  - `Gbb` - *Gorilla beringei beringei* - [Mountain gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=1159185)
-  - `Gbg` - *Gorilla beringei graueri* - [Eastern lowland gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=46359)
-- Western gorilla (*G. gorilla*):
-  - `Ggd` - *Gorilla gorilla diehli* - [Cross River gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=406788)
-  - `Ggg` - *Gorilla gorilla gorilla* - [Western lowland gorilla](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9595)
 
 **Note** - Please check if the file extension contains ".bgz". This is a non-standard extension that for reasons unbeknownst 
 to us were used by the Sanger centre. This extension creates errors when used with bgzip. If the extension is present, run the
