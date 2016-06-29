@@ -122,8 +122,7 @@ with clustering you must determine what exactly you want to cluster. For example
 Do you want to have a coding reference or raw reference? 
 
 #### Reduce reference to coding only
-If you want to have a dataset only for coding genes (i.e. exomic loci), use the 
-[Extract-cdna-headers.bash](script/Extract-cdna-headers.bash) script. Please change the input directory variable 
+To extract 'coding genes' (i.e. exomic loci) from the dataset ('Reference.vcf'), use the [Extract-cdna-headers.bash](script/Extract-cdna-headers.bash) script. Please change the input directory variable 
 "inputvcfdir" and change the output directory variable "outputdir" to the right directories.
 
 #### Merge reference with obtained data
