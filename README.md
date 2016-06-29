@@ -107,7 +107,7 @@ plot(d$C1, d$C2, col=as.character(d$col), pch=19, xlab="PC 1", ylab="PC 2", main
 legend("topleft", c("GBB Mountain East", "GBG Lowland East", "GGD Cross River West", "GGG Lowland West","Sandra Blijdorp","Thirza Blijdorp","Azoux Gabon?"), pch=19, col=c("red","green","pink","blue","orange","yellow","black"), cex=0.8)
 dev.copy2pdf(file="Gorilla_MDS.pdf", width = 7, height = 8)
 ```
-![gorilla_mds](https://cloud.githubusercontent.com/assets/9463723/16419725/11e5c7c2-3d4f-11e6-836b-d9d194c3654a.png)
+<a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16419725/11e5c7c2-3d4f-11e6-836b-d9d194c3654a.png" align="left" height="600" width="525" ></a>
 
 #### Dependencies
 The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including 
