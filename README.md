@@ -101,9 +101,9 @@ The result (plink.mds) can be visualised in R using:
 setwd("path/to/location")
 # set working directory to the location of plink.mds
 d <- read.table("plink.mds", h=T)
-d$pop = factor(c(rep("GBB", 7), rep("GBG", 9), rep("GGD", 1), rep("GGG", 27), rep("Sandra", 1), rep("Thirza", 1), rep("Azoux", 1)))
+d$pop = factor(c(rep("GBB", 7), rep("GBG", 9), rep("GGD", 1), rep("GGG", 27), rep("Sandra", 1), rep("Thirza", 1), rep("Auzoux", 1)))
 d$col = factor(c(rep("red", 7), rep("green", 9), rep("pink", 1), rep("blue", 27), rep("orange", 1), rep("yellow", 1), rep("black", 1)))
-plot(d$C1, d$C2, col=as.character(d$col), pch=19, xlab="PC 1", ylab="PC 2", main = "MDS: Azoux, Blijdorp and Gorilla ssp")
+plot(d$C1, d$C2, col=as.character(d$col), pch=19, xlab="PC 1", ylab="PC 2", main = "MDS: Auzoux, Blijdorp and Gorilla ssp")
 legend("topleft", c("GBB Mountain East", "GBG Lowland East", "GGD Cross River West", "GGG Lowland West","Sandra Blijdorp","Thirza Blijdorp","Azoux Gabon?"), pch=19, col=c("red","green","pink","blue","orange","yellow","black"), cex=0.8)
 dev.copy2pdf(file="Gorilla_MDS.pdf", width = 7, height = 8)
 ```
@@ -124,12 +124,13 @@ The updated R script:
 ``` r
 setwd("path/to/location")
 # set working directory to the location of plink.mds
-d$pop = factor(c(rep("GGD", 1), rep("GGG", 27), rep("Sandra", 1), rep("Thirza", 1), rep("Azoux", 1)))
+d$pop = factor(c(rep("GGD", 1), rep("GGG", 27), rep("Sandra", 1), rep("Thirza", 1), rep("Auzoux", 1)))
 d$col = factor(c(rep("pink", 1), rep("blue", 27), rep("orange", 1), rep("yellow", 1), rep("black", 1)))
-plot(d$C1, d$C2, col=as.character(d$col), pch=19, xlab="PC 1", ylab="PC 2", main = "MDS: Azoux, Blijdorp and Gorilla West ssp")
+plot(d$C1, d$C2, col=as.character(d$col), pch=19, xlab="PC 1", ylab="PC 2", main = "MDS: Auzoux, Blijdorp and Gorilla West ssp")
 legend("topleft", c("GGD Cross River West", "GGG Lowland West","Sandra Blijdorp","Thirza Blijdorp","Azoux Gabon?"), pch=19, col=c("pink","blue","orange","yellow","black"), cex=0.8)
 dev.copy2pdf(file="Gorilla_West_MDS.pdf", width = 7, height = 8)
 ```
+<a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16446353/63677cec-3de7-11e6-9bae-42a3ef6afa92.png" height="600" width="525" ></a>
 
 #### Dependencies
 The work environment has been created on an Ubuntu operating system. Below are the used applications and dependencies, including 
