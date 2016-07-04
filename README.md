@@ -199,7 +199,7 @@ dev.copy2pdf(file="Gorilla_MDS.pdf", width = 7, height = 8)
 
 This MDS plot indicates a potential association between the 'Auzoux' specimen and the Cross River gorilla. Assignment of 'Auzoux' to the Western gorilla, *Gorilla gorilla*, is in agreement with its presumed collection locality of Gabon. Now it has been shown that all three individuals (Sandra, Thirza, 'Auzoux') belong to the Western gorilla, more SNP positions might become available by excluding Eastern gorilla ( *Gorilla beringei* ) specimens.
 
-To remove *Gorilla beringei* spp. from Ref_STA.vcf:
+To remove *Gorilla beringei* ssp. from Ref_STA.vcf:
 ``` bash
 vcf-subset -c Ggd-F-B646_Nyango,Ggg-F-9749_Kowali,Ggg-M-9750_Azizi,Ggg-F-9751_Bulera,Ggg-F-9752_Suzie,Ggg-F-9753_Kokomo,Ggg-F-A930_Sandra,Ggg-M-A931_Banjo,Ggg-F-A932_Mimi,Ggg-F-A933_Dian,Ggg-F-A934_Delphi,Ggg-F-A936_Coco,Ggg-F-A937_Kolo,Ggg-F-A962_Amani,Ggg-F-B642_Akiba_Beri,Ggg-F-B643_Choomba,Ggg-F-B644_Paki,Ggg-F-B647_Anthal,Ggg-F-B650_Katie,Ggg-F-KB3782_Vila,Ggg-F-KB3784_Dolly,Ggg-F-KB4986_Katie,Ggg-F-KB5792_Carolyn,Ggg-F-KB5852_Helen,Ggg-F-KB6039_Oko,Ggg-F-KB7973_Porta,Ggg-M-X00108_Abe,Ggg-M-X00109_Tzambo,Blij_Sandra,Blij_Thirza,Boer_Azoux Ref_STA.vcf > West_only.vcf
 ```
@@ -220,8 +220,35 @@ dev.copy2pdf(file="Gorilla_West_MDS.pdf", width = 7, height = 8)
 ```
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16446353/63677cec-3de7-11e6-9bae-42a3ef6afa92.png" height="600" width="525" ></a>
 
-This MDS plot shows Cross River within (not separated from) the Western lowland gorilla point cloud and no association with 'Auzoux'. The three specimens of this study seem separated from this point cloud (GGG). To assume a methodological error might be an hastily conclusion; the orange dot for Sandra in fact is a blue dot as well. In our opinion these data merely expose another part of the diversity of the Western lowland gorilla.
+This MDS plot depicts the Cross River gorilla within (not separated from) the Western lowland point cloud and shows no association with 'Auzoux'. The three specimens of this study now seem separated from this point cloud (GGG), but notice that the orange dot for Sandra is a blue dot as well. In our opinion these data merely add to the known diversity of the Western lowland gorilla.  
+Because the association between Cross River and 'Auzoux' was only observed in the first MDS plot, we decided to look if the association was random or whether it got supported by particular chromosomes. In case of a methodological error we would expect to observe the three specimens together, but separated from the (GGG) point cloud, repeatedly.
 
+#### SNPs per chromosome
+Starting from 'Ref_STA_select.vcf' the following BASH scripts will create an R script that generates MDS plots (saved as PDF) for each chromosome:
+`1.snps.per.chrom.sh`
+\# creates '--positions' files (for vcftools) and subsequent VCFs per chromosome
+\# output: pos_files and vcf_files folders
+`2.vcf2mds.sh`
+\# converts (a folder of) VCFs to MDS files
+\# output: mds_chrom and mds_sum folders
+`3.mds2R.sh`
+\# creates an R script to visualise the output of multiple MDS analyses
+\# output: script_mds.R
+`0.run_123.sh'
+\# executes the three scripts above consecutively
+The above scripts were written as a temporary solution to prevent a twenty-three fold repetative task of obtaining an MDS plot for each chromosome. The input file is `name\_input\_file`.vcf and represents Gorilla (22 chromosomes, incl. 2a 2b). It has to be located in the folder where script 0. or 1. is executed and the header of input.vcf is assumed to be on line 95. To use the scripts for other organisms/VCFs adjust these requirements (snps.per.chrom.sh l.14 and l.18).
+
+The PDFs of the resulting R script are summarized here:
+https://github.com/naturalis/apexomes/blob/master/pdf/Sum_chrom_1-7.pdf
+https://github.com/naturalis/apexomes/blob/master/pdf/Sum_chrom_8-15.pdf
+https://github.com/naturalis/apexomes/blob/master/pdf/Sum_chrom_16-22.pdf
+
+Noticeable plots:
+<a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16557280/2070a994-41df-11e6-81b2-9d152d122139.png" height="435" width="817" ></a>
+Chromosome 8 shows the eastern and western gorillas separated, but neither group allows a distinction between subspecies.
+Chromosome 17 allows a distinction between the subspecies of __G. beringei__ and indicates much similarity between Cross River and 'Auzoux'.
+
+shows Sandra, Thirza and Cross River inseparable from Western lowland gorilla; the eastern subspecies can no longer be separ
 
 #### References
 1. Scally, A., Yngvadottir, B., Xue, Y., Ayub, Q., Durbin, R., & Tyler-Smith, C. (2013). A genome-wide survey of genetic variation in gorillas using reduced representation sequencing. PloS one, 8(6), e65066. doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
