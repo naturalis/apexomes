@@ -224,18 +224,18 @@ This MDS plot depicts the Cross River gorilla within (not separated from) the We
 Because the association between Cross River and 'Auzoux' was only observed in the first MDS plot, we decided to look if the association was random or whether it got supported by particular chromosomes. In case of a methodological error we would expect to observe the three specimens together, but separated from the (GGG) point cloud, repeatedly.
 
 #### SNPs per chromosome
-Starting from 'Ref_STA_select.vcf' the following BASH scripts will create an R script that generates MDS plots (saved as PDF) for each chromosome:
-`1.snps.per.chrom.sh`
-\# creates '--positions' files (for vcftools) and subsequent VCFs per chromosome
-\# output: pos_files and vcf_files folders
-`2.vcf2mds.sh`
-\# converts (a folder of) VCFs to MDS files
-\# output: mds_chrom and mds_sum folders
-`3.mds2R.sh`
-\# creates an R script to visualise the output of multiple MDS analyses
-\# output: script_mds.R
-`0.run_123.sh'
-\# executes the three scripts above consecutively
+Starting from 'Ref_STA_select.vcf' the following BASH scripts will create an R script that generates MDS plots (saved as PDF) for each chromosome:  
+`1.snps.per.chrom.sh`  
+\# creates '--positions' files (for vcftools) and subsequent VCFs per chromosome  
+\# output: pos_files and vcf_files folders  
+`2.vcf2mds.sh`  
+\# converts (a folder of) VCFs to MDS files  
+\# output: mds_chrom and mds_sum folders  
+`3.mds2R.sh`  
+\# creates an R script to visualise the output of multiple MDS analyses  
+\# output: script_mds.R  
+`0.run_123.sh'  
+\# executes the three scripts above consecutively  
 The above scripts were written as a temporary solution to prevent a twenty-three fold repetative task of obtaining an MDS plot for each chromosome. The input file is `name\_input\_file`.vcf and represents Gorilla (22 chromosomes, incl. 2a 2b). It has to be located in the folder where script 0. or 1. is executed and the header of input.vcf is assumed to be on line 95. To use the scripts for other organisms/VCFs adjust these requirements (snps.per.chrom.sh l.14 and l.18).
 
 The PDFs of the resulting R script are summarized here:
@@ -245,10 +245,8 @@ https://github.com/naturalis/apexomes/blob/master/pdf/Sum_chrom_16-22.pdf
 
 Noticeable plots:
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16557280/2070a994-41df-11e6-81b2-9d152d122139.png" height="435" width="817" ></a>
-Chromosome 8 shows the eastern and western gorillas separated, but neither group allows a distinction between subspecies.
-Chromosome 17 allows a distinction between the subspecies of __G. beringei__ and indicates much similarity between Cross River and 'Auzoux'.
-
-shows Sandra, Thirza and Cross River inseparable from Western lowland gorilla; the eastern subspecies can no longer be separ
+Chromosome 8 shows the eastern and western gorillas separated, but neither group allows a distinction between subspecies.  
+Chromosome 17 allows a distinction between the subspecies of __G. beringei__ and indicates much similarity between Cross River and 'Auzoux'.  
 
 #### References
 1. Scally, A., Yngvadottir, B., Xue, Y., Ayub, Q., Durbin, R., & Tyler-Smith, C. (2013). A genome-wide survey of genetic variation in gorillas using reduced representation sequencing. PloS one, 8(6), e65066. doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
