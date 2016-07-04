@@ -234,7 +234,7 @@ Starting from 'Ref_STA_select.vcf' the following BASH scripts will create an R s
 `3.mds2R.sh`  
 \# creates an R script to visualise the output of multiple MDS analyses  
 \# output: script_mds.R  
-`0.run_123.sh'  
+`0.run_123.sh`  
 \# executes the three scripts above consecutively  
 The above scripts were written as a temporary solution to prevent a twenty-three fold repetative task of obtaining an MDS plot for each chromosome. The input file is `name\_input\_file`.vcf and represents Gorilla (22 chromosomes, incl. 2a 2b). It has to be located in the folder where script 0. or 1. is executed and the header of input.vcf is assumed to be on line 95. To use the scripts for other organisms/VCFs adjust these requirements (snps.per.chrom.sh l.14 and l.18).
 
@@ -246,7 +246,7 @@ https://github.com/naturalis/apexomes/blob/master/pdf/Sum_chrom_16-22.pdf
 Noticeable plots:
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/9463723/16557280/2070a994-41df-11e6-81b2-9d152d122139.png" height="435" width="817" ></a>
 Chromosome 8 shows the eastern and western gorillas separated, but neither group allows a distinction between subspecies.  
-Chromosome 17 allows a distinction between the subspecies of __G. beringei__ and indicates much similarity between Cross River and 'Auzoux'.  
+Chromosome 17 allows a distinction between the subspecies of _G. beringei_ and indicates much similarity between Cross River and 'Auzoux'.  
 
 #### References
 1. Scally, A., Yngvadottir, B., Xue, Y., Ayub, Q., Durbin, R., & Tyler-Smith, C. (2013). A genome-wide survey of genetic variation in gorillas using reduced representation sequencing. PloS one, 8(6), e65066. doi:[10.1371/journal.pone.0065066](http://dx.doi.org/10.1371/journal.pone.0065066)
