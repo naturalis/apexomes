@@ -225,7 +225,8 @@ Because the association between Cross River and 'Auzoux' was only observed in th
 
 #### SNPs per chromosome
 Starting from 'Ref_STA_select.vcf' the following BASH scripts will create an R script that generates MDS plots (saved as PDF) for each chromosome:  
-`1.snps.per.chrom.sh`>\# creates '--positions' files (for vcftools) and subsequent VCFs per chromosome  
+`1.snps.per.chrom.sh`
+>\# creates '--positions' files (for vcftools) and subsequent VCFs per chromosome  
 >\# output: pos_files and vcf_files folders  
 
 `2.vcf2mds.sh`
