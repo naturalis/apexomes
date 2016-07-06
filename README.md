@@ -225,19 +225,19 @@ Because the association between Cross River and 'Auzoux' was only observed in th
 
 #### SNPs per chromosome
 Starting from 'Ref_STA_select.vcf' the following BASH scripts will create an R script that generates MDS plots (saved as PDF) for each chromosome:  
-`1.snps.per.chrom.sh`  
+`1.snps.per.chrom.sh`
 >\# creates '--positions' files (for vcftools) and subsequent VCFs per chromosome  
 >\# output: pos_files and vcf_files folders  
 
-`2.vcf2mds.sh`  
+`2.vcf2mds.sh`
 >\# converts (a folder of) VCFs to MDS files  
 >\# output: mds_chrom and mds_sum folders  
 
-`3.mds2R.sh`  
+`3.mds2R.sh`
 >\# creates an R script to visualise the output of multiple MDS analyses  
 >\# output: script_mds.R  
 
-`0.run_123.sh`  
+`0.run_123.sh`
 >\# executes the three scripts above consecutively  
 
 The above scripts were written as a temporary solution to prevent a twenty-three fold repetative task of obtaining an MDS plot for each chromosome. The input file is `name_input_file`.vcf and represents Gorilla (22 chromosomes, incl. 2a 2b). It has to be located in the folder where script 0. or 1. is executed and the header of input.vcf is assumed to be on line 95. To use the scripts for other organisms/VCFs adjust these requirements (snps.per.chrom.sh l.14 and l.18).
