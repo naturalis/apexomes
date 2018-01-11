@@ -1,6 +1,6 @@
 # The `apexomes` project
 
-![Auzoux paper mache gorilla        photo: G.Grob - Boerhaave museum](https://github.com/naturalis/apexomes/blob/master/Auz_Gor_photo-Grob.jpg)
+![Auzoux paper mache gorilla        photo: G.Grob - Boerhaave museum](https://github.com/naturalis/apexomes/blob/master/Auz_Gor_photo-Grob.jpg "Auzoux paper mache gorilla   photo: G.Grob - Boerhaave museum")
 
 The apexomes project is a [Generade](https://generade.nl/) collaboration between [LUMC](https://www.lumc.nl/), 
 [Hogeschool Leiden](https://www.hsleiden.nl), [Museum Boerhaave](http://www.museumboerhaave.nl/) and 
